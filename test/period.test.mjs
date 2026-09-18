@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { parseRange, dealStatus, formatRange, tidyPeriods } from "../public/period.mjs";
+import { parseRange, dealStatus, formatRange, tidyPeriods, withoutEnded } from "../public/period.mjs";
 
 const today = (s) => new Date(s);
 
@@ -74,4 +74,39 @@ test("구매와 교환이 같은 기간이면 둘 다 남긴다 — 지우면 �
     { label: "引換期間", value: "9月15日～9月21日" },
   ];
   expect(tidyPeriods(both)).toHaveLength(2);
+});
+
+const ended = { label: "対象期間", value: "8月1日（金）～8月7日（木）" };
+const soon = { label: "発券期間", value: "9月28日（月）～10月4日（日）" };
+const live = { label: "発券期間", value: "9月14日（月）～9月23日（水）" };
+
+test("끝난 딜은 내보내지 않는다 — 기획 전체가 끝났으면 그 출처의 딜이 모두 빠진다", () => {
+  const r = { periods: [ended], deals: [{ id: 1 }, { id: 2 }] };
+  expect(withoutEnded(r, today("2026-09-18")).deals).toEqual([]);
+});
+
+test("딜마다 기간이 다르면 끝난 것만 뺀다", () => {
+  const r = { periods: [], deals: [{ id: "old", periods: [ended] }, { id: "now", periods: [live] }] };
+  const out = withoutEnded(r, today("2026-09-18"));
+  expect(out.deals.map((d) => d.id)).toEqual(["now"]);
+});
+
+test("시작 전(開始前)과 기간을 모르는 딜은 남긴다 — 곧 쓸 수 있거나 판단할 근거가 없다", () => {
+  const r = { periods: [], deals: [{ id: "soon", periods: [soon] }, { id: "unknown", periods: [{ label: "備考", value: "なくなり次第終了" }] }] };
+  const out = withoutEnded(r, today("2026-09-18"));
+  expect(out.deals.map((d) => d.id)).toEqual(["soon", "unknown"]);
+  expect(out).toBe(r);
+});
+
+test("発券 기간이 지나면 引換 기간이 남아 있어도 뺀다 — 지금 가서는 쿠폰을 받을 수 없다", () => {
+  const r = { periods: [], deals: [{ id: "exchange-only", periods: [
+    { label: "発券期間", value: "9月1日（火）～9月7日（月）" },
+    { label: "引換期間", value: "9月8日（火）～9月21日（月）" },
+  ] }] };
+  expect(withoutEnded(r, today("2026-09-18")).deals).toEqual([]);
+});
+
+test("引換期間만 적힌 딜은 남긴다 — 発券 기간을 못 읽었을 뿐 지울 근거가 없다", () => {
+  const r = { periods: [], deals: [{ id: "get-only", periods: [{ label: "引換期間", value: "9月8日（火）～9月21日（月）" }] }] };
+  expect(withoutEnded(r, today("2026-09-18")).deals.map((d) => d.id)).toEqual(["get-only"]);
 });

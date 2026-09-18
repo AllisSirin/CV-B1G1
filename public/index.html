@@ -33,7 +33,8 @@
 
 <div class="toolbar">
   <input id="q" type="search" placeholder="商品・メーカーで検索" />
-  <label class="chk"><input id="only-active" type="checkbox" checked /> いま使えるものだけ</label>
+  <label class="chk" id="active-chk" hidden><input id="only-active" type="checkbox" checked /> いま使えるものだけ</label>
+  <label class="chk fav"><input id="only-fav" type="checkbox" /> ★ 気になる件 <span id="fav-count" class="count"></span></label>
 </div>
 
 <p id="status" class="status"></p>

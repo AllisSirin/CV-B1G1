@@ -50,9 +50,10 @@ button { font: inherit; cursor: pointer; }
 .subtabs button { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: 13px; color: var(--dim); }
 .subtabs button[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
 
-.toolbar { display: flex; gap: 8px; align-items: center; margin: 10px 0 6px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 10px 0 6px; }
 .toolbar input[type="search"] { flex: 1; padding: 7px 10px; font-size: 13px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
 .chk { font-size: 13px; color: var(--dim); white-space: nowrap; }
+.chk.fav .count { color: #f0a500; font-weight: 700; }
 .status { color: var(--dim); font-size: 12px; line-height: 1.7; margin: 4px 2px 10px; }
 
 .group { margin: 0 0 18px; }
@@ -66,6 +67,9 @@ button { font: inherit; cursor: pointer; }
 .badge.live { background: #e7f6ec; color: #157347; }
 .badge.done { background: #f1f1f1; color: #8b8f95; }
 .card .title { font-size: 12px; line-height: 1.6; color: var(--dim); flex: 1 1 100%; }
+/* 배지 줄 오른쪽 끝에 두고, 손가락으로 눌러도 빗나가지 않게 넉넉히 잡는다 */
+.card .head .fav { margin-left: auto; background: none; border: 0; padding: 0 2px; min-width: 32px; min-height: 28px; font-size: 19px; line-height: 1; color: #d5dae0; cursor: pointer; }
+.card .head .fav[aria-pressed="true"], .card .head .fav:hover { color: #f0a500; }
 
 .flow { display: flex; flex-direction: column; gap: 0; }
 .side { border-left: 3px solid var(--line); padding: 6px 0 6px 8px; }
@@ -93,6 +97,7 @@ button { font: inherit; cursor: pointer; }
 .row-body .price.hint { font-weight: 500; color: #8a8f98; }
 /* 이름이 완전히 같지 않은 상품에서 읽은 값 — 어디서 왔는지 같이 보여 준다 */
 .row-body .price .from { display: block; font-size: 10px; font-weight: 400; color: var(--dim); }
+
 
 @media (min-width: 560px) {
   .row { grid-template-columns: 120px 1fr; gap: 12px; }

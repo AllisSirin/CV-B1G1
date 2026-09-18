@@ -45,6 +45,23 @@ export function dealStatus(periods, today = new Date()) {
   return { code: "unknown", label: "", live: true, buy, get };
 }
 
+/**
+ * 지금 가서는 쿠폰을 받을 수 없는 딜인지.
+ * 発券(구매) 기간이 지났으면 引換 기간이 남아 있어도 새로 받을 수는 없다 — 「引換のみ可能」은 이미 쿠폰을 가진 사람 이야기다.
+ * 기간을 못 읽었으면(buy 없음) 지울 근거가 없으니 끝난 것으로 보지 않는다.
+ */
+const closed = (status, today) => status.code === "ended" || Boolean(status.buy && today > status.buy.end);
+
+/**
+ * 끝난 딜은 내보내지 않는다 — 취득이 실패해 옛 캐시가 나올 때도 지난 행사가 화면에 올라오지 않게.
+ * 시작 전(開始前)은 남긴다: 오늘 못 쓰더라도 곧 쓸 수 있는 정보다.
+ */
+export function withoutEnded(result, today = new Date()) {
+  const all = result?.deals || [];
+  const deals = all.filter((d) => !closed(dealStatus([...(result.periods || []), ...(d.periods || [])], today), today));
+  return deals.length === all.length ? result : { ...result, deals };
+}
+
 const kindOf = (label = "") => (GET_LABELS.test(label) ? "get" : BUY_LABELS.test(label) ? "buy" : "other");
 
 /**

@@ -1,4 +1,5 @@
 import { dealStatus, tidyPeriods } from "./period.mjs";
+import { createFavorites, dealKey } from "./favorites.mjs";
 
 /** https 로 올린 판에서만 홈 화면 설치·오프라인을 켠다 (개발 중 localhost 는 캐시에 갇히지 않게) */
 if ("serviceWorker" in navigator && location.protocol === "https:") {
@@ -12,11 +13,15 @@ const els = {
   list: document.getElementById("list"),
   status: document.getElementById("status"),
   q: document.getElementById("q"),
+  activeChk: document.getElementById("active-chk"),
   onlyActive: document.getElementById("only-active"),
+  onlyFav: document.getElementById("only-fav"),
+  favCount: document.getElementById("fav-count"),
   refresh: document.getElementById("refresh"),
 };
 
-const state = { stores: [], results: [], prices: { known: 0, pending: 0 }, polls: 0, store: "all", source: null, q: "", onlyActive: true, loading: false, snapshot: false };
+const favorites = createFavorites(globalThis.localStorage);
+const state = { stores: [], results: [], prices: { known: 0, pending: 0 }, polls: 0, store: "all", source: null, q: "", onlyActive: true, onlyFav: false, loading: false, snapshot: false };
 /** 스냅샷으로 올린 판은 그림을 우리 쪽에 두므로 상대 주소, 서버로 돌 때는 프록시를 지난다 */
 const img = (url) => (!url ? "" : /^https?:/i.test(url) ? `/img?u=${encodeURIComponent(url)}` : url);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -87,15 +92,18 @@ function visibleDeals(store) {
 }
 
 const sideText = (side) => [side?.maker, ...(side?.names || [])].join(" ");
+/** 담기·거르기는 카드(딜) 하나가 단위다 — 안에 든 상품 이름으로 딜을 알아본다 */
+const keyOf = (deal) => dealKey({ buy: items(deal?.buy), get: items(deal?.get) });
+
+const isLive = ({ deal, source }) => dealStatus([...(source.periods || []), ...(deal.periods || [])]).live;
+const inScope = ({ source }) => !state.source || source.id === state.source;
 
 function filtered() {
   const q = state.q.trim().toLowerCase();
   return visibleDeals(state.store)
-    .filter(({ source }) => !state.source || source.id === state.source)
-    .filter(({ deal, source }) => {
-      const status = dealStatus([...(source.periods || []), ...(deal.periods || [])]);
-      return !state.onlyActive || status.live;
-    })
+    .filter(inScope)
+    .filter((x) => !state.onlyActive || isLive(x))
+    .filter(({ deal }) => !state.onlyFav || favorites.has(keyOf(deal)))
     .filter(({ deal }) => !q || `${sideText(deal.buy)} ${sideText(deal.get)} ${deal.title || ""}`.toLowerCase().includes(q));
 }
 
@@ -158,10 +166,14 @@ const renderSide = (side, kind) => {
 function renderCard({ deal, source }) {
   const periods = [...(source.periods || []), ...(deal.periods || [])];
   const status = dealStatus(periods);
+  const key = keyOf(deal);
+  const on = favorites.has(key);
   return `<article class="card">
     <div class="head">
       <span class="badge ${status.live ? "live" : "done"}">${esc(status.label || "期間不明")}</span>
       ${tidyPeriods(periods).map((p) => `<span class="badge">${esc(p.label)} ${esc(p.value)}</span>`).join("")}
+      ${key ? `<button type="button" class="fav" data-fav="${esc(key)}" aria-pressed="${on}"
+        title="${on ? "気になるリストから外す" : "気になるリストに入れる"}">★</button>` : ""}
       ${deal.title ? `<span class="title">${esc(deal.title)}</span>` : ""}
     </div>
     <div class="flow">
@@ -205,11 +217,15 @@ function renderAlerts() {
 function render() {
   renderSub();
   renderAlerts();
+  els.favCount.textContent = favorites.size ? `${favorites.size}` : "";
   if (state.loading) {
     els.status.textContent = "各社のページを読み込み中…";
     els.list.innerHTML = "";
     return;
   }
+  /** 지난 딜·시작 전 딜이 하나도 없으면 「いま使えるものだけ」는 걸러낼 게 없다 — 그럴 때는 내지 않는다 */
+  els.activeChk.hidden = !visibleDeals(state.store).filter(inScope).some((x) => !isLive(x));
+
   const rows = filtered();
   els.status.textContent = statusText(rows.length);
 
@@ -223,7 +239,9 @@ function render() {
       ${r.error ? `<p class="err">読み込み失敗: ${esc(r.error)}${r.fetchedAt ? "（前回のデータを表示）" : ""}</p>` : ""}
       ${mine.map(renderCard).join("")}
     </section>`;
-  }).join("") || `<p class="status">該当する1+1はありません。</p>`;
+  }).join("") || `<p class="status">${state.onlyFav && !favorites.size
+      ? "気になる1+1がまだありません。カードの ★ を押すと、ここにまとまります。"
+      : "該当する1+1はありません。"}</p>`;
   renderStores();
 }
 
@@ -240,8 +258,15 @@ els.sub.addEventListener("click", (e) => {
   state.source = btn.dataset.source || null;
   render();
 });
+els.list.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-fav]");
+  if (!btn) return;
+  favorites.toggle(btn.dataset.fav);
+  render();
+});
 els.q.addEventListener("input", () => { state.q = els.q.value; render(); });
 els.onlyActive.addEventListener("change", () => { state.onlyActive = els.onlyActive.checked; render(); });
+els.onlyFav.addEventListener("change", () => { state.onlyFav = els.onlyFav.checked; render(); });
 els.refresh.addEventListener("click", () => load({ refresh: true }));
 
 load();
