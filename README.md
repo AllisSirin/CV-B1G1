@@ -1,78 +1,102 @@
-# 일본 편의점 1+1 모아보기
+# Konbini 1+1 (Japan)
 
-세븐일레븐·훼미리마트·로손의 「1個買うと1個もらえる」 행사를 한 화면에서 본다.
-각 편의점 아이콘을 누르면 그 편의점 페이지만, `전체`를 누르면 네 출처를 한 번에 보여준다.
+All the "buy one, get one free" (「1個買うと1個もらえる」) campaigns from 7-Eleven, FamilyMart and Lawson on one screen.
+Tap a store icon to see only that store, or `すべて` to see all four feeds at once.
 
-## 실행
+[日本語版 README](README.ja.md)
+
+## Run
 
 ```
 cd konbini && node server.mjs   # http://localhost:5176
-bun test                        # 77 tests
+bun test                        # 81 tests
 ```
 
-## 출처
+## Sources
 
-| 아이콘 | 출처 | 페이지 |
+| Icon | Source | Page |
 | --- | --- | --- |
-| 7 | 세븐일레븐 프라이치 | `https://www.sej.co.jp/cmp/plaichi.html` |
-| F | 훼미리마트 영수증 무료교환권 | `.../2023_1buy1-receipt_cp.html` |
-| F | 훼미리마트 파미페이 한정 | `.../famipay_1buy1_cp.html` |
-| L | 로손 1個買うと1個もらえる | 상품·오토쿠 목록에서 매주 기사를 찾아 들어감 |
+| 7 | 7-Eleven Plaichi | `https://www.sej.co.jp/cmp/plaichi.html` |
+| F | FamilyMart receipt coupon | `.../2023_1buy1-receipt_cp.html` |
+| F | FamilyMart FamiPay only | `.../famipay_1buy1_cp.html` |
+| L | Lawson 1個買うと1個もらえる | found weekly from the recommend / otoku listings |
 
-로손은 주마다 기사 URL이 바뀌므로 주소를 적어 두지 않고 3중으로 찾는다.
+Lawson changes the article URL every week, so it is never hard-coded. We look for it three ways:
 
-1. `/recommend/index.html`에서 제목이 「1個/1本/1袋 買うと…もらえる」인 링크를 **전부** 모은다(같은 주에 둘일 수 있음).
-2. 제목 표현이 바뀌어 못 찾으면 `/lab/tsuushin/`의 최신 기사 4개를 직접 열어 본문에 1+1 꼭지가 있는지로 판별한다.
-3. 둘 다 실패하면 캐시의 지난 데이터를 「読み込み失敗…（前回のデータを表示）」와 함께 내준다 — 화면이 비지 않는다.
+1. Collect **every** link on `/recommend/index.html` whose title reads 「1個/1本/1袋 買うと…もらえる」 (there can be two in one week).
+2. If the wording changed and nothing matches, open the four newest `/lab/tsuushin/` articles and decide by whether the body contains a 1+1 section.
+3. If both fail, serve the previous cached data with 「読み込み失敗…（前回のデータを表示）」 — the screen never goes blank.
 
-`2個買うと1個もらえる`처럼 조건이 다른 기사는 일부러 걸리지 않게 앞자리를 1로 고정했다.
+The leading digit is pinned to 1 on purpose so that different offers such as `2個買うと1個もらえる` are not picked up.
 
-## 가격 표기
+## Prices
 
-`lib/catalog.mjs`가 편의점별 상품 목록 페이지(세븐 `/products/a/*`, 훼미리마트 `/goods/*.html`, 로손 `/recommend/original/*`)를
-12시간 캐시로 긁어 `이름 → 세금 포함가` 색인을 만들고, **이름이 완전히 같은 상품에만** 가격을 붙인다(공식 상품 페이지 링크 포함).
-부분 일치를 허용하면 「大粒ラムネ」에 「大粒ラムネ アイスボックス味」 값이 붙어 틀린 가격이 되므로 일부러 막았다.
+`lib/catalog.mjs` scrapes each chain's product listing pages (7-Eleven `/products/a/*`, FamilyMart `/goods/*.html`,
+Lawson `/recommend/original/*`) behind a 12-hour cache, builds a `name → tax-included price` index, and attaches a price
+**only when the name matches exactly** (with a link to the official product page).
+Partial matching is deliberately disabled: it would attach the price of 「大粒ラムネ アイスボックス味」 to 「大粒ラムネ」.
 
-목록에 없는 상품은 `lib/lookup.mjs`가 **각 편의점 자기 검색**으로 상세 페이지를 찾고 `lib/itempage.mjs`가 값을 읽는다.
-세븐은 `search.html?kw=`(서버 렌더), 훼미리마트는 검색 화면이 부르는 MarsFlag JSON을 쓴다.
+For products missing from the listings, `lib/lookup.mjs` falls back to each chain's own search.
+For 7-Eleven that is the product database search **`/products/a/itemresult/?key=…&limit=100`** — its results use the very
+same markup as the listing pages (`div.list_inner` + `item_ttl` + `item_price`), so the `lib/catalog.mjs` parser reads
+**name and price straight off the result page** without opening any product page.
+For FamilyMart we call the MarsFlag JSON that its search screen uses, then read the price with `lib/itempage.mjs`.
 
-세븐 검색은 **낱말별 부분 일치를 AND**로 묶는다. 그래서 상품명을 통째로 넣으면 0건인데 낱말로 쪼개면 찾아진다
-(공식 제목이 「森永 ｉｎバーエネルギー サツマイモ」라서 `森永inバー`는 부분 문자열이 아니다).
-`lib/price.mjs`는 그래서 **상품명 그대로 → 낱말 분해 → 가장 긴 낱말 둘** 순서로 세 번까지 물어본다.
-세븐 상품 페이지는 지역별 주소(`/item/480112/chugoku/`)도 있어 주소가 아니라 **상품 번호**로 중복을 제거한다.
+7-Eleven's mobile full-text search (`search.html?kw=`) is **not used**: it only indexes recent releases, so long-selling
+products like 「綾鷹」「カップヌードル」「リポビタン」 return nothing at all, and it is served as Shift_JIS, which garbles
+every name when read as UTF-8. Switching to the product database search found those very items right away
+(`綾鷹 ６５０ｍｌ 187円`, `ロッテ パイの実 256円`).
 
-이름이 완전히 같지 않아도 한쪽이 다른 쪽의 앞부분이고 남는 꼬리가 짧으면(6자 이하) 값을 읽되 화면에 `≈`와
-읽어온 상품명을 함께 보여 준다. 다만 꼬리에 숫자나 `パック`·`箱`·`入` 같은 묶음 표시가 있으면 값이 달라지므로 인정하지 않는다
-(`マルちゃん正麺 醤油味` 에 `５食パック 734円`이 붙는 사고를 막는다).
-찾은 값은 `data/prices.json`에 계속 남고(못 찾은 것은 7일), 한 요청에 몇 개씩만 찾아 상대 서버를 아끼며 화면은 다 찾을 때까지 5초마다 갱신한다.
+The search matches per word, so passing a whole product name easily returns zero hits because of transcription
+differences (the official title is 「森永 ｉｎバーエネルギー サツマイモ」, so `森永inバー` is not a substring).
+`lib/price.mjs` therefore asks up to three times: **longest single word → the full name → the two longest words**.
+Asking by a single word first is cheaper because one result page resolves a whole family at once (7 kinds of カップヌードル);
+the same word is fetched only once per refresh.
+7-Eleven also serves regional URLs (`/item/480112/chugoku/`), so duplicates are removed by **product number**, not URL.
 
-주의: 세 회사 모두 **자체 상품(PB)과 일부 신상품만 상세 페이지를 낸다.** 1+1 대상은 대부분 제조사(NB) 상품이어서
-2026-09-17 기준 값이 붙는 것은 소수(雪見だいふく 227円, 爽 194円 등)다. 로손은 검색 자체가 외부 위젯이고 자기 상품만 게재해 값을 얻을 곳이 없다.
-값을 못 찾은 상품에는 「제조사 상품명 価格」 구글 검색으로 가는 `Googleで価格を調べる ↗` 링크를 붙인다 — 없는 값을 지어내지 않는다. 매장 검색은 자기 사이트에 올린 상품만 보여 주므로 제조사 상품에는 도움이 안 됐다.
+When the names are not identical but one is a prefix of the other and the leftover tail is short (6 characters or less),
+the price is still used, but the screen shows `≈` together with the name it was read from. A tail containing digits or a
+pack/size marker (`パック`·`箱`·`入`·`ミニ`·`どんぶり`·`ビッグ`·`大盛`) is rejected because the price differs — this is what keeps
+`５食パック 734円` off 「マルちゃん正麺 醤油味」 and `…塩らーめんミニどんぶり 168円` off 「サッポロ一番 塩らーめん」.
+Found prices stay in `data/prices.json` forever (misses for 7 days), and only a few are looked up per request to go easy
+on the other side.
 
-## 구조
+7-Eleven answers **403** when asked too quickly, and then every following request is blocked as well. So a 403 or any
+network failure is **never cached as "no price"** (that would skip the product for 7 days); instead the refresh stops and
+**rests for 10 minutes** — the screen keeps asking for a refresh every few seconds until all prices are in, so without
+the rest we would keep knocking.
 
-- `lib/{seven,familymart,lawson}.mjs` — 페이지별 파서. 결과는 `{ periods, deals:[{ periods, buy, get }] }` 한 모양으로 맞춘다.
-- `lib/html.mjs` — 의존성 없는 태그 추출기(깊이를 세어 블록 하나를 온전히 떼어낸다).
-- `lib/cache.mjs` — `data/cache.json`에 3시간 캐시. 가져오기가 실패하면 옛 데이터를 오류와 함께 내준다.
-- `public/period.mjs` — 「9月24日（木）～10月7日（水）」류 기간을 읽어 `発券中 / 引換のみ / 開始前 / 終了`를 정한다. 서버·화면 공용.
-- `lib/catalog.mjs` — 상품 목록 색인과 가격 매칭. `lib/{lookup,itempage,price}.mjs` — 공식 검색·상세 페이지 값 읽기·값 장부.
-- UI 문구는 전부 일본어(`public/*`, `lib/sources.mjs`). 카드는 `これを買うと` → ↓ → `これがもらえる` 세로 흐름에 품목 수를 함께 적는다.
-- 기간은 세븐처럼 **카드마다** 배지로 적는다(기획 전체 기간도 그 딜에 걸리는 기간이라 카드로 내린다 — 묶음 머리에는 기간을 두지 않는다). 값은 공식 표기 그대로 두고, `tidyPeriods()`(`public/period.mjs`)가 같은 성격(구매/교환)에 같은 기간을 라벨만 바꿔 두 번 적는 곳(로손 `対象期間` = `発券対象商品購入期間`)만 한 줄로 줄인다 — 남기는 쪽은 무슨 기간인지 말해 주는 긴 라벨.
-- 기획(칩) 줄은 한 매장 안에 기획이 둘 이상일 때만 낸다 — 홈에서는 매장 탭과 겹치기만 했다.
-- `public/favorites.mjs` — 관심 1+1(★). 담기는 **카드(딜) 하나**가 단위다. 딜 번호는 주마다 사라지므로 안에 든 상품 이름으로 딜을 알아본다 — `dealKey()` 가 사는 쪽·받는 쪽 상품의 첫 이름을 `買う>もらう` 로 엮고, `favKey()` 가 전각·반각·공백·기호를 지워 표기가 조금 달라도 같은 딜로 본다(짝이 바뀌면 다른 딜). 담아 둔 목록은 `localStorage["konbini.favorites.v2"]` — 로그인이 없어 정적 판에서도 그대로 쓸 수 있고, 저장을 막아 둔 브라우저에서도 죽지 않는다(그 세션만 기억). ★ 는 카드 머리 배지 줄 오른쪽에, 툴바의 `★ 気になる件` 는 담아 둔 카드만 남긴다.
-- **지금 가서 쿠폰을 받을 수 없는 딜은 내보내지 않는다** — `loadSource()` 가 `withoutEnded()`(`public/period.mjs`)를 지난다. `終了` 뿐 아니라 **`発券`(구매) 기간이 지난 딜도 뺀다** — 引換 기간이 남아 있어도(`引換のみ可能`) 새로 쿠폰을 받을 수는 없고, 그건 이미 쿠폰을 가진 사람 이야기다(세븐 プライチ 가 지난 주 상품을 「※無料クーポンの発券は終了しています」 라고 계속 싣는다 — 실측 21건 중 13건이 그랬다). 기간을 못 읽었으면 지울 근거가 없으니 남긴다. 캐시 파일은 읽은 그대로 두고 걸러내기는 내보낼 때만 한다. 시작 전(`開始前`)도 남긴다 — 곧 쓸 수 있는 정보다.
-- 툴바 `いま使えるものだけ`(`#active-chk`) 는 **걸러낼 게 있을 때만** 낸다. `終了` 는 서버에서 이미 빠지므로 남는 건 `開始前` 뿐 — 시작 전 기획이 실린 주에만 나타난다.
-- `/img?u=` — 원본 사이트 이미지를 서버가 대신 받아온다(허용 호스트만). 받은 그림은 `data/img/<sha1>.<ext>` 에 남겨 두고 그다음부터 우리 쪽에서 내보낸다(`lib/images.mjs`) — 보는 사람이 늘어도 편의점 서버를 두드리지 않는다. 스냅샷도 이 캐시를 나눠 쓴다.
+Note: all three chains publish product pages mainly for their **own brands and some new releases**. 1+1 targets are
+mostly manufacturer (NB) products, so as of 2026-09-18 only 14 of 50 items carry a price. Lawson has no usable source
+at all — its search is an external widget and it only lists its own products.
+Items without a price get a `Googleで価格を調べる ↗` link that searches 「maker product name 価格」 — we never invent a number.
+Chain search screens only show what the chain itself listed, which did not help for manufacturer products.
 
-## 공유 (무료로 계속 띄워 두기)
+## Layout
 
-`node scripts/snapshot.mjs` 가 `dist/` 하나를 만든다 — `public/` 사본 + `data/deals.json`(그 시점의 딜·가격) + `img/`(내려 둔 상품 그림). 이러면 서버 없이 어디든 올릴 수 있고, 보는 사람이 편의점 사이트를 두드리지 않는다.
+- `lib/{seven,familymart,lawson}.mjs` — one parser per page. All of them return the same shape: `{ periods, deals:[{ periods, buy, get }] }`.
+- `lib/html.mjs` — dependency-free tag extractor (counts nesting depth to lift out one whole block).
+- `lib/cache.mjs` — 3-hour cache in `data/cache.json`. If fetching fails, the old data is served together with the error.
+- `public/period.mjs` — reads periods like 「9月24日（木）～10月7日（水）」 and decides `発券中 / 引換のみ / 開始前 / 終了`. Shared by server and screen.
+- `lib/catalog.mjs` — listing index and price matching. `lib/{lookup,itempage,price}.mjs` — official search, product page reading, price ledger.
+- All user-facing text is Japanese (`public/*`, `lib/sources.mjs`). A card flows vertically: `これを買うと` → ↓ → `これがもらえる`, with the item count.
+- Periods are shown as badges **on every card**, the way 7-Eleven does it (a campaign-wide period still applies to that deal, so it moves down to the card — group headers carry no period). Values are kept exactly as published; `tidyPeriods()` (`public/period.mjs`) only collapses the case where the same period is printed twice under different labels for the same purpose (Lawson `対象期間` = `発券対象商品購入期間`), keeping the longer label that says what the period is for.
+- The campaign (chip) row appears only when a store has more than one campaign — on the home screen it just duplicated the store tabs.
+- `public/favorites.mjs` — favourite 1+1 (★). The unit is **one card (deal)**. Deal numbers vanish every week, so a deal is recognised by the product names inside it: `dealKey()` joins the first product name of the buy side and the get side as `買う>もらう`, and `favKey()` strips full-width/half-width forms, spaces and symbols so slightly different transcriptions still count as the same deal (a different pairing is a different deal). The list lives in `localStorage["konbini.favorites.v2"]` — no login, so it works in the static build too, and it does not break in browsers with storage disabled (remembered for that session only). ★ sits at the right end of the badge row in the card header; the toolbar's `★ 気になる件` keeps only saved cards.
+- **Deals whose coupons can no longer be issued are not served** — `loadSource()` passes through `withoutEnded()` (`public/period.mjs`). It drops not only `終了` but also deals whose **`発券` (purchase) period has passed**: even if the exchange period is still open (`引換のみ可能`), no new coupon can be issued, and that is a story for people who already hold one (7-Eleven プライチ keeps listing last week's products with 「※無料クーポンの発券は終了しています」 — 13 of 21 measured items were like that). If the period could not be read there is no ground to drop it, so it stays. The cache file keeps what was read; filtering happens only on the way out. `開始前` also stays — it is information you will soon need.
+- The toolbar's `いま使えるものだけ` (`#active-chk`) appears **only when there is something to filter out**. `終了` is already dropped on the server, so all that remains is `開始前` — it shows up only in weeks that carry a not-yet-started campaign.
+- `/img?u=` — the server fetches images from the original sites on our behalf (allowed hosts only). Fetched images are kept in `data/img/<sha1>.<ext>` and served from our side afterwards (`lib/images.mjs`), so more visitors never mean more traffic for the konbini servers. The snapshot shares this cache.
 
-- 화면은 `/api/deals` 를 먼저 부르고, 없으면(정적 판) `data/deals.json` 을 읽는다(`fetchDeals()`). 정적 판에서는 `更新` 단추를 감춘다.
-- 그림은 스냅샷이 `img/<해시>.jpg` 로 바꿔 두므로 프록시가 필요 없다. 서버로 띄울 때는 그대로 `/img?u=` 프록시를 지난다.
-- 자동 갱신: `.github/workflows/pages.yml` 이 하루 두 번(06:20·18:20 JST) 스냅샷을 만들어 GitHub Pages 에 올린다. 공개 저장소면 무료다.
-- git 없이 당장 올리려면 `dist/` 폴더를 Cloudflare Pages 나 Netlify Drop 에 끌어다 놓으면 된다(갱신은 손으로 다시).
-- 링크 미리보기: `public/index.html` 에 og/twitter 태그, 그림은 `public/og.png`. `node scripts/ogimage.mjs` 가 og.png·icon-192·icon-512 을 꾸러미 없이(zlib 만으로) 다시 만든다 — 글꼴이 없어 「1+1」을 네모로 그린다. 스냅샷은 `SITE_URL` 이 있으면 og:image·og:url 을 절대 주소로 바꾼다(워크플로가 Pages 주소를 넣어 준다).
-- 홈 화면 설치: `public/manifest.webmanifest` + `public/sw.js`. 서비스워커는 **https 에서만** 등록한다(개발 중 localhost 가 캐시에 갇히지 않게). 화면 파일을 고치면 `sw.js` 의 `VERSION` 을 올린다.
-- 화면 아래에 비공식·출처 안내를 둔다(`public/index.html` 의 `footer.note`) — 각 사와 무관하고, 공식 사이트 내용을 자동으로 가져와 늘어놓은 것이며, 조건은 공식 페이지에서 확인해야 한다는 안내.
+## Sharing (keeping it up for free)
+
+`node scripts/snapshot.mjs` produces a single `dist/` — a copy of `public/` plus `data/deals.json` (deals and prices at
+that moment) plus `img/` (the downloaded product images). It can be hosted anywhere without a server, and visitors never
+touch the konbini sites.
+
+- The screen calls `/api/deals` first and falls back to `data/deals.json` when it is absent (static build) — see `fetchDeals()`. The `更新` button is hidden in the static build.
+- Images are rewritten to `img/<hash>.jpg` by the snapshot, so no proxy is needed. When run as a server they still go through `/img?u=`.
+- Auto refresh: `.github/workflows/pages.yml` builds a snapshot twice a day (06:20 / 18:20 JST) and publishes it to GitHub Pages. Free for public repositories.
+- To put it up right now without git, drop the `dist/` folder onto Cloudflare Pages or Netlify Drop (refresh by hand).
+- Link previews: og/twitter tags in `public/index.html`, image at `public/og.png`. `node scripts/ogimage.mjs` regenerates og.png, icon-192 and icon-512 with no packages (zlib only) — with no font available it draws 「1+1」 as boxes. When `SITE_URL` is set the snapshot rewrites og:image and og:url to absolute URLs (the workflow passes the Pages address).
+- Add to home screen: `public/manifest.webmanifest` + `public/sw.js`. The service worker registers **only over https** so that localhost never gets stuck in the cache during development. Bump `VERSION` in `sw.js` whenever a screen file changes.
+- A disclaimer sits at the bottom of the screen (`footer.note` in `public/index.html`): unaffiliated with any of the chains, automatically collected from their official pages, and conditions must be confirmed on the official page.
