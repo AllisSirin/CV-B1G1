@@ -1,4 +1,4 @@
-# Konbini 1+1 (Japan)
+# Japanese Convenience Store "Buy 1 Get 1" Campaign
 
 All the "buy one, get one free" (「1個買うと1個もらえる」) campaigns from 7-Eleven, FamilyMart and Lawson on one screen.
 Tap a store icon to see only that store, or `すべて` to see all four feeds at once.
