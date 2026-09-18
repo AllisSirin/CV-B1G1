@@ -168,9 +168,16 @@ function renderCard({ deal, source }) {
   const status = dealStatus(periods);
   const key = keyOf(deal);
   const on = favorites.has(key);
+  /**
+   * 상태 배지는 「보통이 아닐 때」만 낸다.
+   * 발권이 끝난 딜은 서버에서 이미 빠지므로 「購入でクーポン発券中」은 모든 카드에 똑같이 붙어 알려주는 게 없다.
+   */
+  const badge = status.code === "buy"
+    ? ""
+    : `<span class="badge ${status.live ? "live" : "done"}">${esc(status.label || "期間不明")}</span>`;
   return `<article class="card">
     <div class="head">
-      <span class="badge ${status.live ? "live" : "done"}">${esc(status.label || "期間不明")}</span>
+      ${badge}
       ${tidyPeriods(periods).map((p) => `<span class="badge">${esc(p.label)} ${esc(p.value)}</span>`).join("")}
       ${key ? `<button type="button" class="fav" data-fav="${esc(key)}" aria-pressed="${on}"
         title="${on ? "気になるリストから外す" : "気になるリストに入れる"}">★</button>` : ""}

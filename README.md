@@ -58,13 +58,14 @@ When the names are not identical but one is a prefix of the other and the leftov
 the price is still used, but the screen shows `≈` together with the name it was read from. A tail containing digits or a
 pack/size marker (`パック`·`箱`·`入`·`ミニ`·`どんぶり`·`ビッグ`·`大盛`) is rejected because the price differs — this is what keeps
 `５食パック 734円` off 「マルちゃん正麺 醤油味」 and `…塩らーめんミニどんぶり 168円` off 「サッポロ一番 塩らーめん」.
-Found prices stay in `data/prices.json` forever (misses for 7 days), and only a few are looked up per request to go easy
-on the other side.
+Found prices stay in `data/prices.json` until the deal is over (misses for 7 days), and only a few are looked up per
+request to go easy on the other side.
 
-7-Eleven answers **403** when asked too quickly, and then every following request is blocked as well. So a 403 or any
-network failure is **never cached as "no price"** (that would skip the product for 7 days); instead the refresh stops and
-**rests for 10 minutes** — the screen keeps asking for a refresh every few seconds until all prices are in, so without
-the rest we would keep knocking.
+Everything above counts **per chain**, never across them. 7-Eleven answers **403** when asked too quickly and then blocks
+everything that follows, so a 403 or any network failure is **never cached as "no price"** (that would skip the product
+for 7 days); instead **that chain alone rests for 10 minutes** and the others keep going. The per-refresh allowance is
+per chain too, so one chain full of unknown products cannot eat the share of the next one. The screen keeps asking for a
+refresh every few seconds until all prices are in, so without the rest we would keep knocking.
 
 Note: all three chains publish product pages mainly for their **own brands and some new releases**. 1+1 targets are
 mostly manufacturer (NB) products, so as of 2026-09-18 only 14 of 50 items carry a price. Lawson has no usable source
@@ -81,6 +82,7 @@ Chain search screens only show what the chain itself listed, which did not help 
 - `lib/catalog.mjs` — listing index and price matching. `lib/{lookup,itempage,price}.mjs` — official search, product page reading, price ledger.
 - All user-facing text is Japanese (`public/*`, `lib/sources.mjs`). A card flows vertically: `これを買うと` → ↓ → `これがもらえる`, with the item count.
 - Periods are shown as badges **on every card**, the way 7-Eleven does it (a campaign-wide period still applies to that deal, so it moves down to the card — group headers carry no period). Values are kept exactly as published; `tidyPeriods()` (`public/period.mjs`) only collapses the case where the same period is printed twice under different labels for the same purpose (Lawson `対象期間` = `発券対象商品購入期間`), keeping the longer label that says what the period is for.
+- The status badge is printed **only when the state is not the normal one**. Deals whose issuing period has passed are already dropped on the server, so 「購入でクーポン発券中」 would appear identically on every card and say nothing — only `開始前` and unreadable periods get a badge. The 発券/引換 period badges are always kept.
 - The campaign (chip) row appears only when a store has more than one campaign — on the home screen it just duplicated the store tabs.
 - `public/favorites.mjs` — favourite 1+1 (★). The unit is **one card (deal)**. Deal numbers vanish every week, so a deal is recognised by the product names inside it: `dealKey()` joins the first product name of the buy side and the get side as `買う>もらう`, and `favKey()` strips full-width/half-width forms, spaces and symbols so slightly different transcriptions still count as the same deal (a different pairing is a different deal). The list lives in `localStorage["konbini.favorites.v2"]` — no login, so it works in the static build too, and it does not break in browsers with storage disabled (remembered for that session only). ★ sits at the right end of the badge row in the card header; the toolbar's `★ 気になる件` keeps only saved cards.
 - **Deals whose coupons can no longer be issued are not served** — `loadSource()` passes through `withoutEnded()` (`public/period.mjs`). It drops not only `終了` but also deals whose **`発券` (purchase) period has passed**: even if the exchange period is still open (`引換のみ可能`), no new coupon can be issued, and that is a story for people who already hold one (7-Eleven プライチ keeps listing last week's products with 「※無料クーポンの発券は終了しています」 — 13 of 21 measured items were like that). If the period could not be read there is no ground to drop it, so it stays. The cache file keeps what was read; filtering happens only on the way out. `開始前` also stays — it is information you will soon need.
@@ -96,6 +98,10 @@ touch the konbini sites.
 - The screen calls `/api/deals` first and falls back to `data/deals.json` when it is absent (static build) — see `fetchDeals()`. The `更新` button is hidden in the static build.
 - Images are rewritten to `img/<hash>.jpg` by the snapshot, so no proxy is needed. When run as a server they still go through `/img?u=`.
 - Auto refresh: `.github/workflows/pages.yml` builds a snapshot twice a day (06:20 / 18:20 JST) and publishes it to GitHub Pages. Free for public repositories.
+- **`data/prices.json` is committed as a seed** (the only tracked file under `data/` — see `.gitignore`). A runner checks out an empty cache, and looking every price up again is what gets it blocked by 7-Eleven (**403**), which also empties the product images fetched afterwards.
+- Between builds the whole `data/` folder (prices **and** downloaded images) is carried by `actions/cache` under a rolling key (`konbini-data-<run_id>` plus `restore-keys`), so each build only has to look up what is genuinely new. The committed seed is the cold start for when that cache is gone.
+- Every snapshot keeps only what the deals on air right now use: price entries and image files belonging to deals that are over get dropped (`prune`, `pruneImages`). If the same product shows up again in a later deal it is fetched again, so a stale price or picture is never reused and neither cache grows without bound. A source that failed to load — or has no deals at the moment — is left untouched, so one bad fetch can never empty the seed.
+- Images are downloaded **before** prices are looked up, so a 403 while hunting prices no longer costs the pictures too.
 - To put it up right now without git, drop the `dist/` folder onto Cloudflare Pages or Netlify Drop (refresh by hand).
 - Link previews: og/twitter tags in `public/index.html`, image at `public/og.png`. `node scripts/ogimage.mjs` regenerates og.png, icon-192 and icon-512 with no packages (zlib only) — with no font available it draws 「1+1」 as boxes. When `SITE_URL` is set the snapshot rewrites og:image and og:url to absolute URLs (the workflow passes the Pages address).
 - Add to home screen: `public/manifest.webmanifest` + `public/sw.js`. The service worker registers **only over https** so that localhost never gets stuck in the cache during development. Bump `VERSION` in `sw.js` whenever a screen file changes.

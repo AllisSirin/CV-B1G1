@@ -13,6 +13,18 @@ const FIXTURES = join(dirname(fileURLToPath(import.meta.url)), "fixtures");
 const fixture = (name) => readFileSync(join(FIXTURES, name), "utf8");
 const tmpFile = () => join(mkdtempSync(join(tmpdir(), "konbini-price-")), "prices.json");
 
+/** 세븐 상품 검색 결과 한 장 (목록에 이름과 값이 함께 실려 온다) */
+const listPage = (...items) =>
+  items
+    .map(({ name, yen, id = "450215" }) => `
+      <div class="list_inner -item-code-${id}">
+        <div class="detail">
+          <div class="item_ttl"><p><a href="/products/a/item/${id}/">${name}</a></p></div>
+          <div class="item_price"><p>${yen}円（税込${yen}円）</p></div>
+        </div>
+      </div>`)
+    .join("");
+
 test("세븐 상세 페이지: 목록에 없는 상품도 세금 포함가를 읽는다", () => {
   const item = parseItemPage("seven", fixture("seven-item.html"), "https://www.sej.co.jp/products/a/item/450215/");
   expect(item.name).toBe("ロッテ 雪見だいふく");
@@ -64,7 +76,7 @@ test("훼미리마트는 화면 대신 JSON 검색을 읽는다", () => {
 });
 
 test("검색은 각 편의점 자기 사이트에서 한다", () => {
-  expect(searchUrl("seven", "雪見だいふく")).toContain("www.sej.co.jp/search.html");
+  expect(searchUrl("seven", "雪見だいふく")).toContain("www.sej.co.jp/products/a/itemresult/");
   expect(searchUrl("familymart", "のむヨーグルト")).toContain("marsflag.com");
   expect(searchUrl("lawson", "コカ・コーラ")).toBeNull();
   expect(searchable("lawson")).toBe(false);
@@ -75,16 +87,14 @@ const deal = (names, maker = "") => ({
   store: "seven",
 });
 
-test("찾은 값을 붙이고 캐시에 남긴다", async () => {
+test("검색 결과 목록에서 값을 읽어 붙이고 캐시에 남긴다", async () => {
   const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
-  const pages = {
-    [searchUrl("seven", "雪見だいふく")]: '<a href="https://www.sej.co.jp/products/a/item/450215/">x</a>',
-    "https://www.sej.co.jp/products/a/item/450215/": fixture("seven-item.html"),
-  };
-  const book = createPriceBook({ store: cache, fetchPage: async (u) => pages[u] ?? "", pause: 0 });
+  const page = listPage({ name: "別のアイス", yen: 150 }, { name: "ロッテ 雪見だいふく", yen: 227 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
   const result = deal(["雪見だいふく"], "ロッテ");
   await book.fill([result]);
   expect(result.deals[0].buy.price.yen).toBe(227);
+  expect(result.deals[0].buy.price.url).toBe("https://www.sej.co.jp/products/a/item/450215/");
 
   const again = deal(["雪見だいふく"], "ロッテ");
   book.attach(again);
@@ -93,12 +103,8 @@ test("찾은 값을 붙이고 캐시에 남긴다", async () => {
 
 test("규격만 덧붙은 이름은 근사 일치로 값을 읽고 그렇다고 표시한다", async () => {
   const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
-  const page = fixture("seven-item.html").replace("</h1>", " カップ</h1>");
-  const pages = {
-    [searchUrl("seven", "雪見だいふく")]: "https://www.sej.co.jp/products/a/item/450215/",
-    "https://www.sej.co.jp/products/a/item/450215/": page,
-  };
-  const book = createPriceBook({ store: cache, fetchPage: async (u) => pages[u] ?? "", pause: 0 });
+  const page = listPage({ name: "ロッテ 雪見だいふく カップ", yen: 227 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
   const result = deal(["雪見だいふく"], "ロッテ");
   await book.fill([result]);
   expect(result.deals[0].buy.price.yen).toBe(227);
@@ -108,12 +114,8 @@ test("규격만 덧붙은 이름은 근사 일치로 값을 읽고 그렇다고 
 
 test("짧은 이름은 근사 일치를 쓰지 않는다 — 맛이 다른 상품에 값이 붙으면 안 된다", async () => {
   const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
-  const page = fixture("seven-item.html").replace(/<h1([^>]*)>[\s\S]*?<\/h1>/, "<h1$1>大粒ラムネ アイスボックス味</h1>");
-  const pages = {
-    [searchUrl("seven", "大粒ラムネ")]: "https://www.sej.co.jp/products/a/item/450215/",
-    "https://www.sej.co.jp/products/a/item/450215/": page,
-  };
-  const book = createPriceBook({ store: cache, fetchPage: async (u) => pages[u] ?? "", pause: 0 });
+  const page = listPage({ name: "大粒ラムネ アイスボックス味", yen: 227 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
   const result = deal(["大粒ラムネ"]);
   await book.fill([result]);
   expect(result.deals[0].buy.price).toBeUndefined();
@@ -121,24 +123,35 @@ test("짧은 이름은 근사 일치를 쓰지 않는다 — 맛이 다른 상�
 
 test("묶음(５食パック)은 근사 일치로도 인정하지 않는다", async () => {
   const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
-  const page = fixture("seven-item.html").replace(/<h1([^>]*)>[\s\S]*?<\/h1>/, "<h1$1>マルちゃん正麺 醤油味 ５食パック</h1>");
-  const pages = {
-    [searchUrl("seven", "マルちゃん正麺 醤油味")]: "https://www.sej.co.jp/products/a/item/450215/",
-    "https://www.sej.co.jp/products/a/item/450215/": page,
-  };
-  const book = createPriceBook({ store: cache, fetchPage: async (u) => pages[u] ?? "", pause: 0 });
+  const page = listPage({ name: "マルちゃん正麺 醤油味 ５食パック", yen: 734 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
   const result = deal(["マルちゃん正麺 醤油味"]);
   await book.fill([result]);
   expect(result.deals[0].buy.price).toBeUndefined();
 });
 
-test("다른 상품 페이지가 나오면 값을 붙이지 않는다", async () => {
+test("우리가 아는 이름이 더 길면 근사 일치로 인정하지 않는다 — 다른 상품이다", async () => {
   const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
-  const pages = {
-    [searchUrl("seven", "爽 バニラ")]: '<a href="https://www.sej.co.jp/products/a/item/450215/">x</a>',
-    "https://www.sej.co.jp/products/a/item/450215/": fixture("seven-item.html"),
-  };
-  const book = createPriceBook({ store: cache, fetchPage: async (u) => pages[u] ?? "", pause: 0 });
+  const page = listPage({ name: "サッポロ一番 みそラーメン", yen: 147 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
+  const result = deal(["サッポロ一番 みそラーメン味〆のご飯"]);
+  await book.fill([result]);
+  expect(result.deals[0].buy.price).toBeUndefined();
+});
+
+test("규격이 덧붙은 상품(ミニどんぶり)은 근사 일치로도 인정하지 않는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  const page = listPage({ name: "サッポロ一番 塩らーめんミニどんぶり", yen: 168 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
+  const result = deal(["サッポロ一番 塩らーめん"]);
+  await book.fill([result]);
+  expect(result.deals[0].buy.price).toBeUndefined();
+});
+
+test("다른 상품만 나오면 값을 붙이지 않는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  const page = listPage({ name: "ロッテ 雪見だいふく", yen: 227 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => page, pause: 0 });
   const result = deal(["爽 バニラ"], "ロッテ");
   await book.fill([result]);
   expect(result.deals[0].buy.price).toBeUndefined();
@@ -159,7 +172,7 @@ test("한 번에 정해진 개수의 상품만 찾는다", async () => {
   const book = createPriceBook({
     store: cache,
     fetchPage: async (url) => {
-      const kw = decodeURIComponent(/kw=([^&]*)/.exec(url)?.[1] ?? "").replace(/\s+/g, "");
+      const kw = decodeURIComponent(/key=([^&]*)/.exec(url)?.[1] ?? "").replace(/\s+/g, "");
       if (kw) asked.add(kw);
       return "";
     },
@@ -185,6 +198,66 @@ test("못 찾은 상품은 잠시 다시 찾지 않는다", async () => {
   expect(calls).toBe(first);
 });
 
+test("상대가 막으면(403) 「값 없음」으로 굳히지 않고 쉬었다 다시 찾는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  let calls = 0;
+  let clock = 0;
+  const book = createPriceBook({
+    store: cache,
+    fetchPage: async () => {
+      calls += 1;
+      throw new Error("403");
+    },
+    pause: 0,
+    now: () => clock,
+  });
+  const one = () => ({ store: "seven", deals: [{ buy: { names: ["幻の商品"] }, get: { names: ["別の商品"] } }] });
+  await book.fill([one()]);
+  expect(calls).toBe(1);
+
+  await book.fill([one()]);
+  expect(calls).toBe(1);
+
+  clock += 11 * 60 * 1000;
+  await book.fill([one()]);
+  expect(calls).toBe(2);
+});
+
+test("같은 낱말을 쓰는 상품들은 목록 한 장으로 함께 해결한다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  const page = listPage(
+    { name: "カップヌードル チリトマト", yen: 268, id: "340438" },
+    { name: "カップヌードル シーフード", yen: 168, id: "341636" },
+  );
+  let calls = 0;
+  const book = createPriceBook({ store: cache, fetchPage: async () => (calls += 1, page), pause: 0 });
+  const result = {
+    store: "seven",
+    deals: [{ buy: { names: ["カップヌードル チリトマト"] }, get: { names: ["カップヌードル シーフード"] } }],
+  };
+  await book.fill([result]);
+  expect(result.deals[0].buy.price.yen).toBe(268);
+  expect(result.deals[0].get.price.yen).toBe(168);
+  expect(calls).toBe(1);
+});
+
+test("검색 결과에 값이 없는 매장은 상세 페이지를 열어 읽는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  const pages = {
+    [searchUrl("familymart", "ひざつき")]: JSON.stringify({
+      organic: { docs: [{ url: "https://www.family.co.jp/goods/snack/5030606.html" }] },
+    }),
+    "https://www.family.co.jp/goods/snack/5030606.html": fixture("familymart-item.html"),
+  };
+  const book = createPriceBook({ store: cache, fetchPage: async (u) => pages[u] ?? "", pause: 0 });
+  const result = {
+    store: "familymart",
+    deals: [{ buy: { names: ["ひざつき カレー揚げせん爆マヨ"] }, get: { names: ["別の商品"] } }],
+  };
+  await book.fill([result]);
+  expect(result.deals[0].buy.price.yen).toBe(170);
+});
+
 test("값을 찾을 수 없는 상품은 제조사·상품명·価格 웹 검색으로 보낸다", () => {
   const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
   const book = createPriceBook({ store: cache, fetchPage: async () => "" });
@@ -201,4 +274,69 @@ test("검색할 곳이 없는 매장은 찾으러 나가지 않는다", async ()
   const book = createPriceBook({ store: cache, fetchPage: async () => (calls++, ""), pause: 0 });
   await book.fill([{ store: "lawson", deals: [{ buy: { names: ["コカ・コーラゼロ 500ml"] }, get: { names: ["別の商品"] } }] }]);
   expect(calls).toBe(0);
+});
+
+test("내려간 딜의 값은 버리고, 같은 상품이 돌아오면 다시 찾는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  cache.set("seven|むかしの商品", { yen: 100 });
+  cache.set("seven|いまの商品", { yen: 200 });
+  let calls = 0;
+  const book = createPriceBook({ store: cache, fetchPage: async () => (calls += 1, ""), pause: 0 });
+  const live = () => ({ store: "seven", deals: [{ buy: { names: ["いまの商品"] }, get: { names: ["ほかの商品"] } }] });
+
+  expect(book.prune([live()])).toBe(1);
+  expect(cache.get("seven|むかしの商品")).toBeUndefined();
+  expect(cache.get("seven|いまの商品").value.yen).toBe(200);
+
+  await book.fill([{ store: "seven", deals: [{ buy: { names: ["むかしの商品"] }, get: { names: ["いまの商品"] } }] }]);
+  expect(calls).toBeGreaterThan(0);
+});
+
+test("가져오기에 실패했거나 딜이 없는 매장의 값은 버리지 않는다", () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  cache.set("seven|むかしの商品", { yen: 100 });
+  cache.set("familymart|ほかの商品", { yen: 300 });
+  const book = createPriceBook({ store: cache, fetchPage: async () => "", pause: 0 });
+  expect(book.prune([{ store: "seven", deals: [], error: "403" }, { store: "familymart", deals: [] }])).toBe(0);
+  expect(cache.get("seven|むかしの商品").value.yen).toBe(100);
+  expect(cache.get("familymart|ほかの商品").value.yen).toBe(300);
+});
+
+test("한 매장이 막혀도 다른 매장은 계속 찾는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  const item = "https://www.family.co.jp/goods/snack/5030606.html";
+  const asked = [];
+  const book = createPriceBook({
+    store: cache,
+    fetchPage: async (url) => {
+      asked.push(url);
+      if (url.includes("sej.co.jp")) throw new Error("403");
+      return url === item ? fixture("familymart-item.html") : JSON.stringify({ organic: { docs: [{ url: item }] } });
+    },
+    pause: 0,
+  });
+  const seven = { store: "seven", deals: [{ buy: { names: ["幻の商品"] }, get: { names: ["別の商品"] } }] };
+  const familymart = {
+    store: "familymart",
+    deals: [{ buy: { names: ["ひざつき カレー揚げせん爆マヨ"] }, get: { names: ["別の商品"] } }],
+  };
+
+  await book.fill([seven, familymart]);
+  expect(seven.deals[0].buy.price).toBeUndefined();
+  expect(familymart.deals[0].buy.price.yen).toBe(170);
+  /** 막힌 매장에는 한 번만 묻고 그만둔다 */
+  expect(asked.filter((url) => url.includes("sej.co.jp")).length).toBe(1);
+});
+
+test("한 매장이 몫을 다 써도 다른 매장 몫은 남는다", async () => {
+  const cache = createCache(tmpFile(), { ttl: Number.MAX_SAFE_INTEGER });
+  const asked = [];
+  const book = createPriceBook({ store: cache, fetchPage: async (url) => (asked.push(url), ""), budget: 1, pause: 0 });
+  const many = (store) => ({
+    store,
+    deals: [1, 2, 3].map((n) => ({ buy: { names: [`商品${n}番`] }, get: { names: [`景品${n}番`] } })),
+  });
+  await book.fill([many("seven"), many("familymart")]);
+  expect(asked.filter((url) => url.includes("sej.co.jp")).length).toBe(1);
+  expect(asked.filter((url) => url.includes("marsflag.com")).length).toBe(1);
 });
