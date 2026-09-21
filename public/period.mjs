@@ -48,9 +48,15 @@ export function dealStatus(periods, today = new Date()) {
 /**
  * 지금 가서는 쿠폰을 받을 수 없는 딜인지.
  * 発券(구매) 기간이 지났으면 引換 기간이 남아 있어도 새로 받을 수는 없다 — 「引換のみ可能」은 이미 쿠폰을 가진 사람 이야기다.
+ * dealStatus().live 는 이 판정과 다르다 — 引換만 남은 딜도 live:true 다(뱃지엔 그대로 알려줘야 하니).
  * 기간을 못 읽었으면(buy 없음) 지울 근거가 없으니 끝난 것으로 보지 않는다.
+ * withoutEnded(서버·스냅샷)와 화면의 "いま使えるものだけ"(화면, 브라우저 시계로 다시 잼) 둘 다 이 판정 하나를 쓴다 —
+ * 스냅샷을 받은 뒤 시간이 지나 発券이 끝나 버린 딜도 화면에서 걸러지게.
  */
-const closed = (status, today) => status.code === "ended" || Boolean(status.buy && today > status.buy.end);
+export function isDealClosed(periods, today = new Date()) {
+  const status = dealStatus(periods, today);
+  return status.code === "ended" || Boolean(status.buy && today > status.buy.end);
+}
 
 /**
  * 끝난 딜은 내보내지 않는다 — 취득이 실패해 옛 캐시가 나올 때도 지난 행사가 화면에 올라오지 않게.
@@ -58,7 +64,7 @@ const closed = (status, today) => status.code === "ended" || Boolean(status.buy 
  */
 export function withoutEnded(result, today = new Date()) {
   const all = result?.deals || [];
-  const deals = all.filter((d) => !closed(dealStatus([...(result.periods || []), ...(d.periods || [])], today), today));
+  const deals = all.filter((d) => !isDealClosed([...(result.periods || []), ...(d.periods || [])], today));
   return deals.length === all.length ? result : { ...result, deals };
 }
 

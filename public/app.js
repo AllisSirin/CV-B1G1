@@ -1,4 +1,4 @@
-import { dealStatus, tidyPeriods } from "./period.mjs";
+import { dealStatus, isDealClosed, tidyPeriods } from "./period.mjs";
 import { createFavorites, dealKey } from "./favorites.mjs";
 
 /** https 로 올린 판에서만 홈 화면 설치·오프라인을 켠다 (개발 중 localhost 는 캐시에 갇히지 않게) */
@@ -95,7 +95,8 @@ const sideText = (side) => [side?.maker, ...(side?.names || [])].join(" ");
 /** 담기·거르기는 카드(딜) 하나가 단위다 — 안에 든 상품 이름으로 딜을 알아본다 */
 const keyOf = (deal) => dealKey({ buy: items(deal?.buy), get: items(deal?.get) });
 
-const isLive = ({ deal, source }) => dealStatus([...(source.periods || []), ...(deal.periods || [])]).live;
+// dealStatus().live 는 引換만 남은 딜도 true 라 이걸 그대로 쓰면 発券이 끝난 딜이 안 사라진다 — isDealClosed 로 되짚어 확인한다.
+const isLive = ({ deal, source }) => !isDealClosed([...(source.periods || []), ...(deal.periods || [])]);
 const inScope = ({ source }) => !state.source || source.id === state.source;
 
 function filtered() {
