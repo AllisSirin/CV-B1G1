@@ -239,11 +239,18 @@ function render() {
   const groups = sourcesOf(state.store).filter((r) => !state.source || r.id === state.source);
   els.list.innerHTML = groups.map((r) => {
     const mine = rows.filter((x) => x.source.id === r.id);
-    if (!mine.length && !r.error) return "";
+    /** 값을 못 받은 매장(deals 0건)은 지금 걸어 둔 검색·필터 때문에 0건인 것과 다르다 — 후자는 조용히 숨긴다.
+     * 0건이 「캠페인이 확실히 없다」인지 「구조가 바뀌어 못 찾았다」인지는 이 자리에서 가릴 수 없다
+     * (ファミペイ限定 주소가 바뀌어 404 였던 사례 참고) — 그래서 단정하지 않고 「읽어올 수 없었다」고만 말하고,
+     * 공식 페이지 링크는 그대로 남겨 사용자가 직접 확인하게 한다.
+     */
+    const empty = !(r.deals || []).length;
+    if (!mine.length && !r.error && !empty) return "";
     return `<section class="group">
       <h2><span class="icon-dot" style="color:${r.brand}">●</span> ${esc(r.storeLabel)} · ${esc(r.label)}
         <a href="${esc(r.url)}" target="_blank" rel="noopener">公式ページ ↗</a></h2>
-      ${r.error ? `<p class="err">読み込み失敗: ${esc(r.error)}${r.fetchedAt ? "（前回のデータを表示）" : ""}</p>` : ""}
+      ${r.error ? `<p class="err">読み込み失敗: ${esc(r.error)}${r.fetchedAt ? "（前回のデータを表示）" : ""}</p>`
+        : empty ? `<p class="empty">1+1情報を読み込めませんでした。上の公式ページでご確認ください。</p>` : ""}
       ${mine.map(renderCard).join("")}
     </section>`;
   }).join("") || `<p class="status">${state.onlyFav && !favorites.size

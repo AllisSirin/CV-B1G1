@@ -97,7 +97,7 @@ touch the konbini sites.
 
 - The screen calls `/api/deals` first and falls back to `data/deals.json` when it is absent (static build) — see `fetchDeals()`. The `更新` button is hidden in the static build.
 - Images are rewritten to `img/<hash>.jpg` by the snapshot, so no proxy is needed. When run as a server they still go through `/img?u=`.
-- Auto refresh: `.github/workflows/pages.yml` builds a snapshot twice a day (06:20 / 18:20 JST) and publishes it to GitHub Pages. Free for public repositories.
+- Auto refresh: `.github/workflows/pages.yml` builds a snapshot once a day, right after midnight JST (00:10, ten minutes of slack since the exact hour gets crowded on GitHub's schedulers) and publishes it to GitHub Pages. Free for public repositories.
 - **`data/prices.json` is committed as a seed** (the only tracked file under `data/` — see `.gitignore`). A runner checks out an empty cache, and looking every price up again is what gets it blocked by 7-Eleven (**403**), which also empties the product images fetched afterwards.
 - Between builds the whole `data/` folder (prices **and** downloaded images) is carried by `actions/cache` under a rolling key (`konbini-data-<run_id>` plus `restore-keys`), so each build only has to look up what is genuinely new. The committed seed is the cold start for when that cache is gone.
 - Every snapshot keeps only what the deals on air right now use: price entries and image files belonging to deals that are over get dropped (`prune`, `pruneImages`). If the same product shows up again in a later deal it is fetched again, so a stale price or picture is never reused and neither cache grows without bound. A source that failed to load — or has no deals at the moment — is left untouched, so one bad fetch can never empty the seed.

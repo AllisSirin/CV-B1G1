@@ -4,7 +4,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseReceipt, parseFamipay } from "../lib/familymart.mjs";
 import { parseSeven } from "../lib/seven.mjs";
-import { findCampaignLinks, hasCampaign, listArticles, parseLawson } from "../lib/lawson.mjs";
+import { findCampaignLinks, findLawsonSales, hasCampaign, listArticles, parseLawson, parseLawsonSale } from "../lib/lawson.mjs";
 
 const FIXTURES = join(dirname(fileURLToPath(import.meta.url)), "fixtures");
 const fixture = (name) => readFileSync(join(FIXTURES, name), "utf8");
@@ -129,4 +129,35 @@ test("로손: 1+1 꼭지만 잘라 발권·교환 상품을 나눈다", () => {
 
 test("로손: 1+1 링크가 없으면 빈 목록", () => {
   expect(findCampaignLinks("<a href=\"/x.html\">新商品</a>", "https://www.lawson.co.jp/")).toEqual([]);
+});
+
+test("로손: 낱장 캠페인 페이지(recommend/sale/detail) — 표를 ●로 갈라 구매·교환을 나눈다", () => {
+  const r = parseLawsonSale(fixture("lawson-sale-detail.html"), "https://www.lawson.co.jp/recommend/sale/detail/1532242_3677.html");
+  expect(r.deals).toHaveLength(1);
+  const [deal] = r.deals;
+  expect(deal.buy.names).toEqual(["ジョージア 恵比寿ブラック 500ml", "ジョージア 恵比寿ラテ 500ml"]);
+  expect(deal.buy.maker).toBe("コカ・コーラ");
+  expect(deal.get.names).toEqual(["ジョージア カフェウォーター ブラック 500ml"]);
+  expect(deal.periods).toEqual([
+    { label: "開催期間", value: "2026.09.22 ～ 2026.10.12" },
+    { label: "発券期間", value: "9/22(火)〜9/28(月)" },
+    { label: "引換期間", value: "9/29(火)〜10/12(月)" },
+  ]);
+});
+
+test("로손: 낱장 캠페인 페이지에 대상 표(#saleDetail)가 없으면 빈 딜", () => {
+  expect(parseLawsonSale("<p>no article here</p>", "https://www.lawson.co.jp/x.html"))
+    .toEqual({ url: "https://www.lawson.co.jp/x.html", periods: [], deals: [], notes: [] });
+});
+
+test("findLawsonSales: 그림 파일명의 _1buy1_ 표로 낱장 캠페인만 골라낸다", () => {
+  const indexHtml = `<a href="/recommend/sale/detail/999_3677.html">
+    <div class="img"><img src="/recommend/__icsFiles/x/20260922_1buy1_cola_e.jpg"></div>
+    <p class="ttl">飲料1本もらえるキャンペーン</p></a>
+    <a href="/recommend/sale/detail/111_3677.html">
+    <div class="img"><img src="/recommend/__icsFiles/x/other_sale.jpg"></div>
+    <p class="ttl">関係ないセール</p></a>`;
+  expect(findLawsonSales(indexHtml, "https://www.lawson.co.jp/recommend/index.html")).toEqual([
+    { url: "https://www.lawson.co.jp/recommend/sale/detail/999_3677.html", hash: "", title: "飲料1本もらえるキャンペーン" },
+  ]);
 });

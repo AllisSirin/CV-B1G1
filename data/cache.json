@@ -1,0 +1,2299 @@
+{
+  "familymart-famipay": {
+    "fetchedAt": 1790011023982,
+    "value": {
+      "url": "https://www.family.co.jp/campaign/spot/famipay_1buy1.html",
+      "periods": [],
+      "deals": [
+        {
+          "periods": [
+            {
+              "label": "クーポン配信期間",
+              "value": "9月22日（火）～ 9月28日（月）"
+            },
+            {
+              "label": "クーポン利用期間",
+              "value": "9月29日（火）～ 10月5日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/famipay_1buy1/item/2609/260922_buy_01.jpg",
+            "maker": "ロッテ",
+            "names": [
+              "アクオ",
+              "クリアブルーミント",
+              "グリーンミント",
+              "アクアグレープ"
+            ],
+            "volume": "",
+            "notes": [],
+            "periods": [
+              {
+                "label": "クーポン配信期間",
+                "value": "9月22日（火）～ 9月28日（月）"
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/famipay_1buy1/item/2609/260922_get_01.jpg",
+            "maker": "ロッテ",
+            "names": [
+              "アクオ",
+              "クリアブルーミント",
+              "グリーンミント",
+              "アクアグレープ"
+            ],
+            "volume": "",
+            "notes": [],
+            "periods": [
+              {
+                "label": "クーポン利用期間",
+                "value": "9月29日（火）～ 10月5日（月）"
+              }
+            ]
+          }
+        },
+        {
+          "periods": [
+            {
+              "label": "クーポン配信期間",
+              "value": "9月22日（火）～ 9月28日（月）"
+            },
+            {
+              "label": "クーポン利用期間",
+              "value": "9月29日（火）～ 10月5日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/famipay_1buy1/item/2609/260922_buy_02.jpg",
+            "maker": "コカ・コーラ",
+            "names": [
+              "ジョージア カフェラテ 500ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "periods": [
+              {
+                "label": "クーポン配信期間",
+                "value": "9月22日（火）～ 9月28日（月）"
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/famipay_1buy1/item/2609/260922_get_02.jpg",
+            "maker": "コカ・コーラ",
+            "names": [
+              "ジョージア カフェラテ 500ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "periods": [
+              {
+                "label": "クーポン利用期間",
+                "value": "9月29日（火）～ 10月5日（月）"
+              }
+            ]
+          }
+        },
+        {
+          "periods": [
+            {
+              "label": "クーポン配信期間",
+              "value": "9月22日（火）～ 9月28日（月）"
+            },
+            {
+              "label": "クーポン利用期間",
+              "value": "9月29日（火）～ 10月5日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/famipay_1buy1/item/2609/260922_buy_03.jpg",
+            "maker": "コカ・コーラ",
+            "names": [
+              "ジョージア ブラック 500ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "periods": [
+              {
+                "label": "クーポン配信期間",
+                "value": "9月22日（火）～ 9月28日（月）"
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/famipay_1buy1/item/2609/260922_get_03.jpg",
+            "maker": "コカ・コーラ",
+            "names": [
+              "ジョージア ブラック 500ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "periods": [
+              {
+                "label": "クーポン利用期間",
+                "value": "9月29日（火）～ 10月5日（月）"
+              }
+            ]
+          }
+        }
+      ],
+      "notes": []
+    }
+  },
+  "familymart-receipt": {
+    "fetchedAt": 1790011023985,
+    "value": {
+      "url": "https://www.family.co.jp/campaign/spot/2023_1buy1-receipt_cp.html",
+      "periods": [
+        {
+          "label": "キャンペーン期間",
+          "value": "9/22火～9/28月"
+        },
+        {
+          "label": "引換期間",
+          "value": "9/29火AM7:00～10/5月"
+        }
+      ],
+      "deals": [
+        {
+          "periods": [],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item01.webp",
+            "maker": "アサヒ",
+            "names": [
+              "green cola"
+            ],
+            "volume": "500ml",
+            "notes": []
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item01.webp",
+            "maker": "アサヒ",
+            "names": [
+              "green cola"
+            ],
+            "volume": "500ml",
+            "notes": []
+          }
+        },
+        {
+          "periods": [],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item02-1.webp",
+            "maker": "グリコ",
+            "names": [
+              "ポッキーチョコレート",
+              "ポッキー極細",
+              "つぶつぶいちごポッキー",
+              "アーモンドクラッシュポッキー"
+            ],
+            "volume": "",
+            "notes": []
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item02-2.webp",
+            "maker": "グリコ",
+            "names": [
+              "フレンドベーカリー チョコレートビスケット",
+              "フレンドベーカリー ココア＆チョコチップ"
+            ],
+            "volume": "",
+            "notes": []
+          }
+        },
+        {
+          "periods": [],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item03-1.webp",
+            "maker": "対象の",
+            "names": [
+              "日清完全メシ 汁なしカップヌードル 111G",
+              "日清完全メシ 汁なしカップヌードル シーフードヌードル 111G",
+              "日清完全メシ 日清焼そばU.F.O. 123G",
+              "日清完全メシ ユッケジャン 110G",
+              "日清完全メシ トムヤムライス 109G",
+              "日清完全メシ カレーメシ 欧風カレー 119G"
+            ],
+            "volume": "",
+            "notes": [
+              "※ユッケジャンは、沖縄県では実施しておりません。"
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item03-2.webp",
+            "maker": "ファミマル",
+            "names": [
+              "伊右衛門 毎日すこやか 濃い緑茶",
+              "伊右衛門 毎日すこやか 濃いほうじ茶"
+            ],
+            "volume": "各600ml",
+            "notes": []
+          }
+        },
+        {
+          "periods": [],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item04-1.webp",
+            "maker": "エースコック",
+            "names": [
+              "スーパーカップ1.5倍 ブタキムラーメン",
+              "スーパーカップ1.5倍 あばれ豚骨ラーメン"
+            ],
+            "volume": "",
+            "notes": []
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item04-2.webp",
+            "maker": "エースコック",
+            "names": [
+              "ミニわかめラーメン ごま・しょうゆ"
+            ],
+            "volume": "",
+            "notes": []
+          }
+        },
+        {
+          "periods": [],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item05-1.webp",
+            "maker": "明治",
+            "names": [
+              "エッセル スーパーカップ ストロベリーチョコ"
+            ],
+            "volume": "200ml",
+            "notes": []
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.family.co.jp/content/dam/family/campaign/2023_1buy1-receipt_cp/images/260922/item05-2.webp",
+            "maker": "明治",
+            "names": [
+              "ブルガリア フローズン ヨーグルトデザート いちご 80ml",
+              "ブルガリア フローズン ヨーグルトデザート 85ml"
+            ],
+            "volume": "",
+            "notes": []
+          }
+        }
+      ],
+      "notes": [
+        "無料引換券は9/29火AM7:00〜使える!"
+      ]
+    }
+  },
+  "seven-plaichi": {
+    "fetchedAt": 1790011023974,
+    "value": {
+      "url": "https://www.sej.co.jp/cmp/plaichi.html",
+      "periods": [],
+      "deals": [
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「コカ・コーラ ゼロ 500ml」を1本買うと、「コカ・コーラ ゼロ 500ml」「コカ・コーラ プラス 470ml」いずれか1本無料クーポンプレゼント9月29日（火）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/cz260922/mv_tkt_cz260922.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月22日（火）～9月28日（月）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月29日（火）～10月12日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cz260922/item01_zerosugar_cz260922.jpg",
+            "maker": "",
+            "names": [
+              "コカ・コーラ ゼロ 500ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cz260922/item01_zerosugar_cz260922.jpg",
+                "maker": "",
+                "names": [
+                  "コカ・コーラ ゼロ 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cz260922/item01_zerosugar_cz260922.jpg",
+            "maker": "",
+            "names": [
+              "コカ・コーラ ゼロ 500ml",
+              "コカ・コーラ プラス 470ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cz260922/item01_zerosugar_cz260922.jpg",
+                "maker": "",
+                "names": [
+                  "コカ・コーラ ゼロ 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cz260922/item02_plus_cz260922.jpg",
+                "maker": "",
+                "names": [
+                  "コカ・コーラ プラス 470ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「スターバックス ホワイトモカ 500ml」を1本買うと、「サントリー クラフトボス ラテ 500ml※ホットは対象外です。」「サントリー クラフトボス 甘くないイタリアーノ 500ml」いずれか1本無料クーポンプレゼント9月29日（火）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/sb260922/mv_tkt_sb260922.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月22日（火）～9月28日（月）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月29日（火）～10月12日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sb260922/item01_sb_whitemocha_sb260922.jpg",
+            "maker": "",
+            "names": [
+              "スターバックス ホワイトモカ 500ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sb260922/item01_sb_whitemocha_sb260922.jpg",
+                "maker": "",
+                "names": [
+                  "スターバックス ホワイトモカ 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sb260922/item02_cb_cafelate_sb260922.jpg",
+            "maker": "",
+            "names": [
+              "サントリー クラフトボス ラテ 500ml",
+              "サントリー クラフトボス 甘くないイタリアーノ 500ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sb260922/item02_cb_cafelate_sb260922.jpg",
+                "maker": "",
+                "names": [
+                  "サントリー クラフトボス ラテ 500ml"
+                ],
+                "volume": "",
+                "notes": [
+                  "※ホットは対象外です。"
+                ],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sb260922/item03_cb_italiano_sb260922.jpg",
+                "maker": "",
+                "names": [
+                  "サントリー クラフトボス 甘くないイタリアーノ 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「ロッテ 雪見だいふく」を1個買うと、「ロッテ 爽 バニラ」1個無料クーポンプレゼント9月24日（木）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/yd260917/mv_tkt_yd260917.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月17日（木）～9月23日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月24日（木）～10月7日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/yd260917/item01_yukimi_yd260917.jpg",
+            "maker": "",
+            "names": [
+              "ロッテ 雪見だいふく"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/yd260917/item01_yukimi_yd260917.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ 雪見だいふく"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/yd260917/item02_soh_yd260917.jpg",
+            "maker": "",
+            "names": [
+              "ロッテ 爽 バニラ"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/yd260917/item02_soh_yd260917.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ 爽 バニラ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「森永inバー エネルギー サツマイモ」「森永inバー プロテイン ベイクドチョコ」「森永inバー プロテイン ベイクドビター」「森永inバー プロテインザクザクチョコ」「森永inバー プロテイン ザクザクビター」いずれか1個買うと、「森永inバー エネルギー サツマイモ」1個無料クーポンプレゼント9月24日（木）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/mv_tkt_in260917.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月17日（木）～9月23日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月24日（木）～10月7日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item01_sweetpotato_in260917.jpg",
+            "maker": "",
+            "names": [
+              "森永inバー エネルギー サツマイモ",
+              "森永inバー プロテイン ベイクドチョコ",
+              "森永inバー プロテイン ベイクドビター",
+              "森永inバー プロテイン ザクザクチョコ",
+              "森永inバー プロテイン ザクザクビター"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item01_sweetpotato_in260917.jpg",
+                "maker": "",
+                "names": [
+                  "森永inバー エネルギー サツマイモ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item02_chocolate_in260917.jpg",
+                "maker": "",
+                "names": [
+                  "森永inバー プロテイン ベイクドチョコ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item03_bitter_in260917.jpg",
+                "maker": "",
+                "names": [
+                  "森永inバー プロテイン ベイクドビター"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item04_crunchy_in260917.jpg",
+                "maker": "",
+                "names": [
+                  "森永inバー プロテイン ザクザクチョコ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item05_crunchy_bitter_in260917.jpg",
+                "maker": "",
+                "names": [
+                  "森永inバー プロテイン ザクザクビター"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item01_sweetpotato_in260917.jpg",
+            "maker": "",
+            "names": [
+              "森永inバー エネルギー サツマイモ"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/in260917/item01_sweetpotato_in260917.jpg",
+                "maker": "",
+                "names": [
+                  "森永inバー エネルギー サツマイモ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「サッポロ一番 塩らーめん やっぱりたまごでしょ！」「サッポロ一番 塩らーめん味〆のご飯」「サッポロ一番 みそラーメン味〆のご飯」「サッポロ一番 塩らーめん ミニどんぶり」いずれか1個買うと、「サッポロ一番 しょうゆ味」「サッポロ一番 みそラーメン」「サッポロ一番 塩らーめん」いずれか1個無料クーポンプレゼント9月24日（木）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/mv_tkt_sp260917.jpg?v3",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月17日（木）～9月23日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月24日（木）～10月7日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item01_egg_sp260917.jpg",
+            "maker": "",
+            "names": [
+              "サッポロ一番 塩らーめん やっぱりたまごでしょ！",
+              "サッポロ一番 塩らーめん味〆のご飯",
+              "サッポロ一番 みそラーメン味〆のご飯",
+              "サッポロ一番 塩らーめん ミニどんぶり"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item01_egg_sp260917.jpg",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 塩らーめん やっぱりたまごでしょ！"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item02_shiogohan_sp260917.jpg",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 塩らーめん味〆のご飯"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item03_misogohan_sp260917.jpg",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 みそラーメン味〆のご飯"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item04_shioramen_sp260917.jpg?v2",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 塩らーめん ミニどんぶり"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item05_shoyu_sp260917.jpg",
+            "maker": "",
+            "names": [
+              "サッポロ一番 しょうゆ味",
+              "サッポロ一番 みそラーメン",
+              "サッポロ一番 塩らーめん"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item05_shoyu_sp260917.jpg",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 しょうゆ味"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item06_miso_sp260917.jpg",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 みそラーメン"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sp260917/item07_shio_sp260917.jpg",
+                "maker": "",
+                "names": [
+                  "サッポロ一番 塩らーめん"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「ヘパリーゼW ハイパー 100ml」「ヘパリーゼW プレミアム極 100ml」「ヘパリーゼ 胃腸ドリンク 50mL」いずれか1本買うと、「セブンプレミアム むぎ茶 600ml」「セブンプレミアム ルイボスティー 600ml」「セブンプレミアム ジャスミン茶 600ml」いずれか1本無料クーポンプレゼント9月24日（木）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/mv_tkt_hp260917.jpg?v3",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月17日（木）～9月23日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月24日（木）～10月7日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item01_hyper_hp260917.jpg",
+            "maker": "",
+            "names": [
+              "ヘパリーゼW ハイパー 100ml",
+              "ヘパリーゼW プレミアム極 100ml",
+              "ヘパリーゼ 胃腸ドリンク 50mL"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item01_hyper_hp260917.jpg",
+                "maker": "",
+                "names": [
+                  "ヘパリーゼW ハイパー 100ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item02_kiwami_hp260917.jpg",
+                "maker": "",
+                "names": [
+                  "ヘパリーゼW プレミアム極 100ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item03_apple_hp260917.jpg?v2",
+                "maker": "",
+                "names": [
+                  "ヘパリーゼ 胃腸ドリンク 50mL"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item04_7pmugicha_hp260917.jpg",
+            "maker": "",
+            "names": [
+              "セブンプレミアム むぎ茶 600ml",
+              "セブンプレミアム ルイボスティー 600ml",
+              "セブンプレミアム ジャスミン茶 600ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item04_7pmugicha_hp260917.jpg",
+                "maker": "",
+                "names": [
+                  "セブンプレミアム むぎ茶 600ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item05_7pruibosu_hp260917.jpg",
+                "maker": "",
+                "names": [
+                  "セブンプレミアム ルイボスティー 600ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/hp260917/item06_7pjasmine_hp260917.jpg",
+                "maker": "",
+                "names": [
+                  "セブンプレミアム ジャスミン茶 600ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「よわない檸檬堂 350ml」「よわない檸檬堂 無糖シークヮーサー 350ml」いずれか1本買うと、同商品1本無料クーポンプレゼント9月24日（木）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/mv_tkt_ld260917.jpg?v2",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月17日（木）～9月23日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月24日（木）～10月7日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/item01_lemon_ld260917.jpg",
+            "maker": "",
+            "names": [
+              "よわない檸檬堂 350ml",
+              "よわない檸檬堂 無糖シークヮーサー 350ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/item01_lemon_ld260917.jpg",
+                "maker": "",
+                "names": [
+                  "よわない檸檬堂 350ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/item02_Shikuwasa_ld260917.jpg",
+                "maker": "",
+                "names": [
+                  "よわない檸檬堂 無糖シークヮーサー 350ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/item01_lemon_ld260917.jpg",
+            "maker": "",
+            "names": [
+              "よわない檸檬堂 350ml",
+              "よわない檸檬堂 無糖シークヮーサー 350ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/item01_lemon_ld260917.jpg",
+                "maker": "",
+                "names": [
+                  "よわない檸檬堂 350ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ld260917/item02_Shikuwasa_ld260917.jpg",
+                "maker": "",
+                "names": [
+                  "よわない檸檬堂 無糖シークヮーサー 350ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "ticketing",
+          "statusLabel": "発券中",
+          "title": "「ロッテ マカダミア ポップジョイ」「ロッテ ガーナ ポップジョイ」いずれか1個買うと、「ロッテ チョコパイ クリームシュー」「ロッテ チョコパイ ビターエクレア」いずれか1個無料クーポンプレゼント9月24日（木）から使える。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/mv_tkt_pj260917.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月17日（木）～9月23日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月24日（木）～10月7日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/item01_macadamia_pj260917.jpg",
+            "maker": "",
+            "names": [
+              "ロッテ マカダミア ポップジョイ",
+              "ロッテ ガーナ ポップジョイ"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/item01_macadamia_pj260917.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ マカダミア ポップジョイ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/item02_ghana_pj260917.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ ガーナ ポップジョイ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/item03_creamshou_pj260917.jpg",
+            "maker": "",
+            "names": [
+              "ロッテ チョコパイ クリームシュー",
+              "ロッテ チョコパイ ビターエクレア"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/item03_creamshou_pj260917.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ チョコパイ クリームシュー"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pj260917/item04_bittereclair_pj260917.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ チョコパイ ビターエクレア"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「綾鷹 650ml※ホットは対象外です。」を1本買うと、「綾鷹 濃いほうじ茶 650ml※ホットは対象外です。」「爽健美茶 600ml※ホットは対象外です。」いずれか1本無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/at260915/mv_exc_at260915.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月15日（火）～9月21日（月）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月22日（火）～10月5日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/at260915/item01_authentic_at260915.jpg",
+            "maker": "",
+            "names": [
+              "綾鷹 650ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/at260915/item01_authentic_at260915.jpg",
+                "maker": "",
+                "names": [
+                  "綾鷹 650ml"
+                ],
+                "volume": "",
+                "notes": [
+                  "※ホットは対象外です。"
+                ],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/at260915/item02_roasted_at260915.jpg",
+            "maker": "",
+            "names": [
+              "綾鷹 濃いほうじ茶 650ml",
+              "爽健美茶 600ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。",
+              "※ホットは対象外です。"
+            ],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/at260915/item02_roasted_at260915.jpg",
+                "maker": "",
+                "names": [
+                  "綾鷹 濃いほうじ茶 650ml"
+                ],
+                "volume": "",
+                "notes": [
+                  "※ホットは対象外です。"
+                ],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/at260915/item03_sokenbicha_at260915.jpg",
+                "maker": "",
+                "names": [
+                  "爽健美茶 600ml"
+                ],
+                "volume": "",
+                "notes": [
+                  "※ホットは対象外です。"
+                ],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「サントリー クラフトボス ミルクラテ 500ml」を1本買うと、「サントリー NOPE 600ml」1本無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/cb260915/mv_exc_cb260915.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月15日（火）～9月21日（月）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月22日（火）～10月5日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cb260915/item01_milklatte_cb260915.jpg",
+            "maker": "",
+            "names": [
+              "サントリー クラフトボス ミルクラテ 500ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cb260915/item01_milklatte_cb260915.jpg",
+                "maker": "",
+                "names": [
+                  "サントリー クラフトボス ミルクラテ 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cb260915/item02_nope_cb260915.jpg",
+            "maker": "",
+            "names": [
+              "サントリー NOPE 600ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cb260915/item02_nope_cb260915.jpg",
+                "maker": "",
+                "names": [
+                  "サントリー NOPE 600ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「バンダイ 魚ギョッと 釣りグミ」を1個買うと、「バンダイ キャラパキ発掘恐竜」1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/tg260911/mv_exc_tg260911.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月11日（金）～9月17日（木）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月18日（金）～10月1日（木）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/tg260911/item01_tsurigumi_tg260911.jpg",
+            "maker": "",
+            "names": [
+              "バンダイ 魚ギョッと 釣りグミ"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/tg260911/item01_tsurigumi_tg260911.jpg",
+                "maker": "",
+                "names": [
+                  "バンダイ 魚ギョッと 釣りグミ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/tg260911/item02_kyoryuchoco_tg260911.jpg",
+            "maker": "",
+            "names": [
+              "バンダイ キャラパキ発掘恐竜"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/tg260911/item02_kyoryuchoco_tg260911.jpg",
+                "maker": "",
+                "names": [
+                  "バンダイ キャラパキ発掘恐竜"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「マルちゃん正麺 醤油味」を1個買うと、同商品1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/mc260910/mv_exc_mc260910.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月10日（木）～9月16日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月17日（木）～9月30日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/mc260910/item01_maruchan_mc260910.jpg",
+            "maker": "",
+            "names": [
+              "マルちゃん正麺 醤油味"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/mc260910/item01_maruchan_mc260910.jpg",
+                "maker": "",
+                "names": [
+                  "マルちゃん正麺 醤油味"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/mc260910/item01_maruchan_mc260910.jpg",
+            "maker": "",
+            "names": [
+              "マルちゃん正麺 醤油味"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/mc260910/item01_maruchan_mc260910.jpg",
+                "maker": "",
+                "names": [
+                  "マルちゃん正麺 醤油味"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「日清 カップヌードル 感謝の謎肉増量※「日清 カップヌードル」も対象です。」「日清 カップヌードル カレー 感謝の謎肉増量※「日清 カップヌードル カレー」も対象です。」「日清 カップヌードル シーフードヌードル 感謝のカニカマ増量※「日清 シーフードヌードル」も対象です。」「日清 カップヌードル チリトマトヌードル 感謝の謎肉増量※「日清 チリトマトヌードル」も対象です。」いずれか1個買うと、「日清 カップヌードル ミニ」「日清 カップヌードル シーフードヌードル ミニ」いずれか1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/mv_exc_cn260910.jpg?v2",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月10日（木）～9月16日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月17日（木）～9月30日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item01_normal_cn260910.jpg",
+            "maker": "",
+            "names": [
+              "日清 カップヌードル 感謝の謎肉増量",
+              "日清 カップヌードル カレー 感謝の謎肉増量",
+              "日清 カップヌードル シーフードヌードル 感謝のカニカマ増量",
+              "日清 カップヌードル チリトマトヌードル 感謝の謎肉増量"
+            ],
+            "volume": "",
+            "notes": [
+              "※「日清 カップヌードル」も対象です。",
+              "※「日清 カップヌードル カレー」も対象です。",
+              "※「日清 シーフードヌードル」も対象です。",
+              "※「日清 チリトマトヌードル」も対象です。"
+            ],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item01_normal_cn260910.jpg",
+                "maker": "",
+                "names": [
+                  "日清 カップヌードル 感謝の謎肉増量"
+                ],
+                "volume": "",
+                "notes": [
+                  "※「日清 カップヌードル」も対象です。"
+                ],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item02_curry_cn260910.jpg",
+                "maker": "",
+                "names": [
+                  "日清 カップヌードル カレー 感謝の謎肉増量"
+                ],
+                "volume": "",
+                "notes": [
+                  "※「日清 カップヌードル カレー」も対象です。"
+                ],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item03_seafoot_cn260910.jpg",
+                "maker": "",
+                "names": [
+                  "日清 カップヌードル シーフードヌードル 感謝のカニカマ増量"
+                ],
+                "volume": "",
+                "notes": [
+                  "※「日清 シーフードヌードル」も対象です。"
+                ],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item04_chilitomato_cn260910.jpg",
+                "maker": "",
+                "names": [
+                  "日清 カップヌードル チリトマトヌードル 感謝の謎肉増量"
+                ],
+                "volume": "",
+                "notes": [
+                  "※「日清 チリトマトヌードル」も対象です。"
+                ],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item05_normal_mini_cn260910.jpg",
+            "maker": "",
+            "names": [
+              "日清 カップヌードル ミニ",
+              "日清 カップヌードル シーフードヌードル ミニ"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item05_normal_mini_cn260910.jpg",
+                "maker": "",
+                "names": [
+                  "日清 カップヌードル ミニ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/cn260910/item06_seafood_mini_cn260910.jpg",
+                "maker": "",
+                "names": [
+                  "日清 カップヌードル シーフードヌードル ミニ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「大正製薬 リポビタンD11 100mL」「大正製薬 リポビタンD プレミアム 100mL」いずれか1本買うと、「大正製薬 リポビタンD 100mL」1本無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/rp260910/mv_exc_rp260910.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月10日（木）～9月16日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月17日（木）～9月30日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rp260910/item01_D11_rp260910.jpg",
+            "maker": "",
+            "names": [
+              "大正製薬 リポビタンD11 100mL",
+              "大正製薬 リポビタンD プレミアム 100mL"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rp260910/item01_D11_rp260910.jpg",
+                "maker": "",
+                "names": [
+                  "大正製薬 リポビタンD11 100mL"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rp260910/item02_premium_rp260910.jpg",
+                "maker": "",
+                "names": [
+                  "大正製薬 リポビタンD プレミアム 100mL"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rp260910/item03_normal_rp260910.jpg",
+            "maker": "",
+            "names": [
+              "大正製薬 リポビタンD 100mL"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rp260910/item03_normal_rp260910.jpg",
+                "maker": "",
+                "names": [
+                  "大正製薬 リポビタンD 100mL"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「有楽 ブラックサンダー」を1個買うと、「有楽 至福のブラックサンダー フランス発酵バター」1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/bt260910/mv_exc_bt260910.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月10日（木）～9月16日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月17日（木）～9月30日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/bt260910/item01_normal_bt260910.jpg",
+            "maker": "",
+            "names": [
+              "有楽 ブラックサンダー"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/bt260910/item01_normal_bt260910.jpg",
+                "maker": "",
+                "names": [
+                  "有楽 ブラックサンダー"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/bt260910/item02_butter_bt260910.jpg",
+            "maker": "",
+            "names": [
+              "有楽 至福のブラックサンダー フランス発酵バター"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/bt260910/item02_butter_bt260910.jpg",
+                "maker": "",
+                "names": [
+                  "有楽 至福のブラックサンダー フランス発酵バター"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「ゴンチャ 黒糖烏龍ミルクティー 400ml」「ゴンチャ 阿里山マンゴー ティーエード 400ml」「キリン 午後の紅茶 白ぶどうとレモン 500ml」いずれか1本買うと、「キリン 午後の紅茶 おいしい無糖 600ml※ホットは対象外です。」「キリン 午後の紅茶 おいしい無糖 香るレモン 600ml」「キリン 午後の紅茶 白ぶどうとレモン 500ml」いずれか1本無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/mv_exc_gc260908.jpg?v2",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月8日（火）～9月14日（月）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月15日（火）～9月28日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item01_milkTea_gc260908.jpg",
+            "maker": "",
+            "names": [
+              "ゴンチャ 黒糖烏龍ミルクティー 400ml",
+              "ゴンチャ 阿里山マンゴー ティーエード 400ml",
+              "キリン 午後の紅茶 白ぶどうとレモン 500ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item01_milkTea_gc260908.jpg",
+                "maker": "",
+                "names": [
+                  "ゴンチャ 黒糖烏龍ミルクティー 400ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item02_mango_gc260908.jpg",
+                "maker": "",
+                "names": [
+                  "ゴンチャ 阿里山マンゴー ティーエード 400ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item03_whiteGrapes_gc260908.jpg",
+                "maker": "",
+                "names": [
+                  "キリン 午後の紅茶 白ぶどうとレモン 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item04_sugarFree_gc260908.jpg",
+            "maker": "",
+            "names": [
+              "キリン 午後の紅茶 おいしい無糖 600ml",
+              "キリン 午後の紅茶 おいしい無糖 香るレモン 600ml",
+              "キリン 午後の紅茶 白ぶどうとレモン 500ml"
+            ],
+            "volume": "",
+            "notes": [
+              "※ホットは対象外です。"
+            ],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item04_sugarFree_gc260908.jpg",
+                "maker": "",
+                "names": [
+                  "キリン 午後の紅茶 おいしい無糖 600ml"
+                ],
+                "volume": "",
+                "notes": [
+                  "※ホットは対象外です。"
+                ],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item05_sugarFree_Lemon_gc260908.jpg",
+                "maker": "",
+                "names": [
+                  "キリン 午後の紅茶 おいしい無糖 香るレモン 600ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/gc260908/item03_whiteGrapes_gc260908.jpg",
+                "maker": "",
+                "names": [
+                  "キリン 午後の紅茶 白ぶどうとレモン 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「まるしぼりりんご＆カルピス® 470ml」を1本買うと、「ぐんぐんグルトα 快眠・快腸ケア 500ml」1本無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/rk260908/mv_exc_rk260908.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月8日（火）～9月14日（月）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月15日（火）～9月28日（月）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rk260908/item01_appleCalpis_rk260908.jpg",
+            "maker": "",
+            "names": [
+              "まるしぼりりんご＆ カルピス® 470ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rk260908/item01_appleCalpis_rk260908.jpg",
+                "maker": "",
+                "names": [
+                  "まるしぼりりんご＆ カルピス® 470ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rk260908/item02_gungunGurt_rk260908.jpg",
+            "maker": "",
+            "names": [
+              "ぐんぐんグルトα 快眠・快腸ケア 500ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/rk260908/item02_gungunGurt_rk260908.jpg",
+                "maker": "",
+                "names": [
+                  "ぐんぐんグルトα 快眠・快腸ケア 500ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「THE ANSWER スーパーラメラ シャンプー&トリートメント」を1個買うと、「めぐりズム アイマスク 完熟ゆず 1枚」「めぐりズム アイマスク ラベンダー 1枚」「めぐりズム アイマスク 金木犀 1枚」「めぐりズム アイマスク 無香料 1枚」「めぐりズム アイマスク カモミール 1枚」いずれか1枚無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/mv_exc_as260904.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月4日（金）～9月10日（木）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月11日（金）～9月24日（木）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item01_answer_as260904.jpg",
+            "maker": "",
+            "names": [
+              "THE ANSWER スーパーラメラ シャンプー& トリートメント"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item01_answer_as260904.jpg",
+                "maker": "",
+                "names": [
+                  "THE ANSWER スーパーラメラ シャンプー& トリートメント"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item02_mr_yuzu_as260904.jpg",
+            "maker": "",
+            "names": [
+              "めぐりズム アイマスク 完熟ゆず 1枚",
+              "めぐりズム アイマスク ラベンダー 1枚",
+              "めぐりズム アイマスク 金木犀 1枚",
+              "めぐりズム アイマスク 無香料 1枚",
+              "めぐりズム アイマスク カモミール 1枚"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item02_mr_yuzu_as260904.jpg",
+                "maker": "",
+                "names": [
+                  "めぐりズム アイマスク 完熟ゆず 1枚"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item03_mr_lavender_as260904.jpg",
+                "maker": "",
+                "names": [
+                  "めぐりズム アイマスク ラベンダー 1枚"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item04_mr_kinmokusei_as260904.jpg",
+                "maker": "",
+                "names": [
+                  "めぐりズム アイマスク 金木犀 1枚"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item05_mr_mukoryo_as260904.jpg",
+                "maker": "",
+                "names": [
+                  "めぐりズム アイマスク 無香料 1枚"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/as260904/item06_mr_chamomile_as260904.jpg",
+                "maker": "",
+                "names": [
+                  "めぐりズム アイマスク カモミール 1枚"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「明治 エッセル スーパーカップ チョコクッキー」を1個買うと、「明治 エッセル スーパーカップ クッキーバニラ」1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/sc260903/mv_exc_sc260903.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月3日（木）～9月9日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月10日（木）～9月23日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sc260903/item01_choco_sc260903.jpg",
+            "maker": "",
+            "names": [
+              "明治 エッセル スーパーカップ チョコクッキー"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sc260903/item01_choco_sc260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 エッセル スーパーカップ チョコクッキー"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": false,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sc260903/item02_vanilla_sc260903.jpg",
+            "maker": "",
+            "names": [
+              "明治 エッセル スーパーカップ クッキーバニラ"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/sc260903/item02_vanilla_sc260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 エッセル スーパーカップ クッキーバニラ"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「伊藤園 ビタミン野菜 200ml」「伊藤園 鉄分野菜 200ml」「伊藤園 カリウム野菜 200ml」いずれか1本買うと、「伊藤園 ビタミン野菜 200ml」「伊藤園 鉄分野菜 200ml」「伊藤園 カリウム野菜 200ml」「伊藤園 1日分の野菜 200ml」いずれか1本無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/mv_exc_vy260903.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月3日（木）～9月9日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月10日（木）～9月23日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item01_vitamin_vy260903.jpg",
+            "maker": "",
+            "names": [
+              "伊藤園 ビタミン野菜 200ml",
+              "伊藤園 鉄分野菜 200ml",
+              "伊藤園 カリウム野菜 200ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item01_vitamin_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 ビタミン野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item02_iron_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 鉄分野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item03_kalium_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 カリウム野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item01_vitamin_vy260903.jpg",
+            "maker": "",
+            "names": [
+              "伊藤園 ビタミン野菜 200ml",
+              "伊藤園 鉄分野菜 200ml",
+              "伊藤園 カリウム野菜 200ml",
+              "伊藤園 1日分の野菜 200ml"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item01_vitamin_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 ビタミン野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item02_iron_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 鉄分野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item03_kalium_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 カリウム野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/vy260903/item04_yasai_vy260903.jpg",
+                "maker": "",
+                "names": [
+                  "伊藤園 1日分の野菜 200ml"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「明治 プロビオヨーグルト R-1ドリンク 112g」「明治 プロビオヨーグルト R-1ドリンク 低糖低カロリー」「明治 プロビオヨーグルト R-1ドリンク TheGOLD」「明治 プロビオヨーグルト R-1ドリンク TheGOLD 低糖低カロリー」いずれか1本買うと、「明治 プロビオヨーグルト LG21ドリンク 112g」「明治 ヘモグロビンA1c 対策ヨーグルトドリンク 112g 」「明治 プロビオヨーグルト LG21 112g」「明治 ブルガリア 低糖ヨーグルト」いずれか1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/mv_exc_ro260903.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月3日（木）～9月9日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月10日（木）～9月23日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item01_r1_normal_ro260903.jpg",
+            "maker": "",
+            "names": [
+              "明治 プロビオヨーグルト R-1ドリンク 112g",
+              "明治 プロビオヨーグルト R-1ドリンク 低糖低カロリー",
+              "明治 プロビオヨーグルト R-1ドリンク TheGOLD",
+              "明治 プロビオヨーグルト R-1ドリンク TheGOLD 低糖低カロリー"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item01_r1_normal_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 プロビオヨーグルト R-1ドリンク 112g"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item02_r1_rowsugar_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 プロビオヨーグルト R-1ドリンク 低糖低カロリー"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item03_r1_gold_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 プロビオヨーグルト R-1ドリンク TheGOLD"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item04_r1_gold_rowsugar_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 プロビオヨーグルト R-1ドリンク TheGOLD 低糖低カロリー"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item05_LG21_ro260903.jpg",
+            "maker": "",
+            "names": [
+              "明治 プロビオヨーグルト LG21ドリンク 112g",
+              "明治 ヘモグロビンA1c 対策ヨーグルトドリンク 112g",
+              "明治 プロビオヨーグルト LG21 112g",
+              "明治 ブルガリア 低糖ヨーグルト"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item05_LG21_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 プロビオヨーグルト LG21ドリンク 112g"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item06_A1c_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 ヘモグロビンA1c 対策ヨーグルトドリンク 112g"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item07_LG21_yoghurt_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 プロビオヨーグルト LG21 112g"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/ro260903/item08_Bulgaria_ro260903.jpg",
+                "maker": "",
+                "names": [
+                  "明治 ブルガリア 低糖ヨーグルト"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        },
+        {
+          "status": "exchange",
+          "statusLabel": "引換中",
+          "title": "「ロッテ パイの実 苺の収穫」「ロッテ パイの実」いずれか1個買うと、「ロッテ コアラのマーチ チョコレート」「ロッテ コアラのマーチ いちご」いずれか1個無料引換中 ※無料クーポンの発券は終了しています。",
+          "banner": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/mv_exc_pm260903.jpg",
+          "periods": [
+            {
+              "label": "発券期間",
+              "value": "9月3日（木）～9月9日（水）"
+            },
+            {
+              "label": "引換期間",
+              "value": "9月10日（木）～9月23日（水）"
+            }
+          ],
+          "buy": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/item01_pie_ichigo_pm260903.jpg",
+            "maker": "",
+            "names": [
+              "ロッテ パイの実 苺の収穫",
+              "ロッテ パイの実"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/item01_pie_ichigo_pm260903.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ パイの実 苺の収穫"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/item02_pie_choco_pm260903.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ パイの実"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          },
+          "get": {
+            "anyone": true,
+            "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/item03_koala_choco_pm260903.jpg",
+            "maker": "",
+            "names": [
+              "ロッテ コアラのマーチ チョコレート",
+              "ロッテ コアラのマーチ いちご"
+            ],
+            "volume": "",
+            "notes": [],
+            "items": [
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/item03_koala_choco_pm260903.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ コアラのマーチ チョコレート"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              },
+              {
+                "image": "https://www.sej.co.jp/library/contents/cmp/plaichi/pm260903/item04_koala_ichigo_pm260903.jpg",
+                "maker": "",
+                "names": [
+                  "ロッテ コアラのマーチ いちご"
+                ],
+                "volume": "",
+                "notes": [],
+                "anyone": false
+              }
+            ]
+          }
+        }
+      ],
+      "notes": []
+    }
+  },
+  "lawson-hapitoku": {
+    "fetchedAt": 1790011024151,
+    "value": {
+      "url": "https://www.lawson.co.jp/recommend/sale/detail/1532242_3677.html",
+      "periods": [],
+      "deals": [
+        {
+          "periods": [
+            {
+              "label": "開催期間",
+              "value": "2026.09.22 ～ 2026.10.12"
+            },
+            {
+              "label": "発券期間",
+              "value": "9/22(火)〜9/28(月)"
+            },
+            {
+              "label": "引換期間",
+              "value": "9/29(火)〜10/12(月)"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "",
+            "maker": "コカ・コーラ",
+            "names": [
+              "ジョージア 恵比寿ブラック 500ml",
+              "ジョージア 恵比寿ラテ 500ml"
+            ],
+            "volume": "",
+            "notes": []
+          },
+          "get": {
+            "anyone": false,
+            "image": "",
+            "maker": "コカ・コーラ",
+            "names": [
+              "ジョージア カフェウォーター ブラック 500ml"
+            ],
+            "volume": "",
+            "notes": []
+          }
+        },
+        {
+          "periods": [
+            {
+              "label": "開催期間",
+              "value": "2026.09.22 ～ 2026.10.05"
+            },
+            {
+              "label": "発券期間",
+              "value": "9/22(火)〜9/28(月)"
+            },
+            {
+              "label": "引換期間",
+              "value": "9/29(火)〜10/5(月)"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "",
+            "maker": "アサヒ",
+            "names": [
+              "レインストーム トロピカル 250ml",
+              "レインストーム グァバストロベリー 250ml",
+              "レインストーム ハーベストグレープ 250ml"
+            ],
+            "volume": "",
+            "notes": []
+          },
+          "get": {
+            "anyone": false,
+            "image": "",
+            "maker": "アサヒ",
+            "names": [
+              "レインストーム トロピカル 250ml",
+              "レインストーム グァバストロベリー 250ml",
+              "レインストーム ハーベストグレープ 250ml"
+            ],
+            "volume": "",
+            "notes": []
+          }
+        },
+        {
+          "periods": [
+            {
+              "label": "開催期間",
+              "value": "2026.09.22 ～ 2026.10.05"
+            },
+            {
+              "label": "発券期間",
+              "value": "9/22(火)〜9/28(月)"
+            },
+            {
+              "label": "引換期間",
+              "value": "9/29(火)〜10/5(月)"
+            }
+          ],
+          "buy": {
+            "anyone": false,
+            "image": "",
+            "maker": "エースコック",
+            "names": [
+              "スーパーカップ1.5倍 ブタキムラーメン"
+            ],
+            "volume": "",
+            "notes": []
+          },
+          "get": {
+            "anyone": false,
+            "image": "",
+            "maker": "エースコック",
+            "names": [
+              "スーパーカップミニ もやしみそラーメン"
+            ],
+            "volume": "",
+            "notes": []
+          }
+        }
+      ],
+      "notes": []
+    }
+  }
+}
