@@ -2,7 +2,7 @@
  * 홈 화면에서 열었을 때 곧바로 뜨게, 전파가 없어도 지난 목록은 보이게.
  * 화면 파일을 고치면 VERSION 을 올린다(옛 캐시는 activate 에서 지운다).
  */
-const VERSION = "konbini-v7";
+const VERSION = "konbini-v8";
 const SHELL = ["./", "./index.html", "./app.js", "./period.mjs", "./favorites.mjs", "./style.css", "./icon-192.png"];
 
 self.addEventListener("install", (e) => {

@@ -12,7 +12,7 @@
 body {
   margin: 0 auto;
   max-width: 720px;
-  padding: 12px 12px 48px;
+  padding: 12px 12px 24px;
   background: var(--bg);
   color: var(--ink);
   font: 14px/1.5 -apple-system, "Segoe UI", "Hiragino Sans", "Meiryo", "Malgun Gothic", sans-serif;
@@ -104,8 +104,11 @@ button { font: inherit; cursor: pointer; }
   .row { grid-template-columns: 120px 1fr; gap: 12px; }
   .row img, .row .noimg { width: 120px; height: 92px; }
   .store .label { font-size: 13px; }
+  /* 좁은 화면에서는 밑 여백이 너무 크게 느껴진다 — 넓은(데스크톱) 화면에서만 넉넉히 둔다 */
+  body { padding-bottom: 48px; }
+  footer.note { margin-bottom: 40px; }
 }
 
-footer.note { margin: 24px 0 40px; padding: 12px 14px; border-top: 1px solid var(--line); color: var(--dim); font-size: 11px; line-height: 1.7; }
+footer.note { margin: 24px 0 24px; padding: 12px 14px; border-top: 1px solid var(--line); color: var(--dim); font-size: 11px; line-height: 1.7; }
 footer.note p { margin: 0 0 6px; }
 footer.note b { color: var(--ink); }
