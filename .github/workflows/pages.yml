@@ -2,8 +2,8 @@ name: snapshot & publish
 
 on:
   schedule:
-    - cron: "20 21 * * *"
-    - cron: "20 9 * * *"
+    # 00:03 JST — 날짜가 넘어간 바로 다음(자정 정각은 몰려서 늦을 수 있어 3 분 여유를 둔다), 하루 한 번
+    - cron: "3 15 * * *"
   push:
     branches: [main]
   workflow_dispatch:
@@ -22,12 +22,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # 찾아 둔 값과 받아 둔 그림을 다음 빌드로 넘긴다.
+      # 매번 처음부터 캐면 세븐이 403 으로 막고, 그 뒤에 받는 상품 그림까지 함께 빈다.
+      # 키에 run_id 를 붙여 매번 새로 저장하고, restore-keys 로 가장 최근 것을 받는다.
+      - uses: actions/cache@v4
+        with:
+          path: data
+          key: konbini-data-${{ github.run_id }}
+          restore-keys: konbini-data-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - id: pages
         uses: actions/configure-pages@v5
-      - name: build snapshot
+      - name: 스냅샷 만들기 (미리보기용 절대 주소 포함)
         run: node scripts/snapshot.mjs
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
