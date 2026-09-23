@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { parseRange, dealStatus, formatRange, tidyPeriods, withoutEnded } from "../public/period.mjs";
+import { parseRange, dealStatus, formatRange, isDealClosed, tidyPeriods, withoutEnded } from "../public/period.mjs";
 
 const today = (s) => new Date(s);
 
@@ -109,4 +109,23 @@ test("発券 기간이 지나면 引換 기간이 남아 있어도 뺀다 — �
 test("引換期間만 적힌 딜은 남긴다 — 発券 기간을 못 읽었을 뿐 지울 근거가 없다", () => {
   const r = { periods: [], deals: [{ id: "get-only", periods: [{ label: "引換期間", value: "9月8日（火）～9月21日（月）" }] }] };
   expect(withoutEnded(r, today("2026-09-18")).deals.map((d) => d.id)).toEqual(["get-only"]);
+});
+
+test("isDealClosed: 화면의 「いま使えるものだけ」도 withoutEnded 와 같은 기준을 쓴다", () => {
+  const buyEndedGetOpen = [
+    { label: "発券期間", value: "9月1日（火）～9月7日（月）" },
+    { label: "引換期間", value: "9月8日（火）～9月21日（月）" },
+  ];
+  // dealStatus 만 보면 引換 기간이라 live:true 다 — 그걸 그대로 「사용 가능」으로 쓰면 안 된다.
+  expect(dealStatus(buyEndedGetOpen, today("2026-09-18")).live).toBe(true);
+  expect(isDealClosed(buyEndedGetOpen, today("2026-09-18"))).toBe(true);
+
+  const buyLive = [
+    { label: "発券期間", value: "9月17日（木）～9月23日（水）" },
+    { label: "引換期間", value: "9月24日（木）～10月7日（水）" },
+  ];
+  expect(isDealClosed(buyLive, today("2026-09-18"))).toBe(false);
+
+  const getOnly = [{ label: "引換期間", value: "9月8日（火）～9月21日（月）" }];
+  expect(isDealClosed(getOnly, today("2026-09-18"))).toBe(false);
 });
