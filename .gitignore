@@ -1,3 +1,5 @@
 node_modules/
 dist/
-data/
+data/*
+# 찾아 둔 값은 저장소에 함께 둔다 — GitHub Actions 는 캐시가 빈 상태로 시작해 각 매장에 몰아 묻다 막힌다
+!data/prices.json
